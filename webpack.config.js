@@ -42,6 +42,17 @@ let publicModule = {
                     }
                 ]
             },
+
+          // 加载Vue 单文件组件
+            {
+                test: /\.vue$/,
+                exclude: /node_modules/, // 排除node_modules下.js的解析
+                use: [{
+                loader: 'vue-loader'
+                }]
+            },
+
+
             //加载scss
             {
                 test: /\.scss$/,
