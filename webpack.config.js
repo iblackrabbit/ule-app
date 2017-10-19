@@ -66,8 +66,8 @@ let publicModule = {
                 test: /.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: "url-loader",
                 options: {
-                    limit: 1000,
-                    name: "images/[name].[ext]"
+                    limit: 10,
+                    name: "media/images/[name].[ext]"
                 }
             },
             // 加载媒体文件
@@ -85,8 +85,8 @@ let publicModule = {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'file-loader',
                 options: {
-                    limit: 10000,
-                    name: 'iconfont/[name].[ext]'
+                    limit: 10,
+                    name: 'media/iconfont/[name].[ext]'
                 }
             }
         ]
