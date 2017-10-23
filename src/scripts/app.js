@@ -5,7 +5,6 @@ import Index from './pages/index/index.vue';
 
 import "../styles/app.scss";
 
-//import routes from '.routes';
 
 import 'mint-ui/lib/style.css';
 

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+
+.phvip_all{
+    margin-top:.1rem;
+    width:100%;
+    height:3.8rem;
+     @include flexbox();
+     @include flex-direction(column);
+     .phvip_title{
+         width:100%;
+         height:.4rem;
+         background: #fff;
+         @include border(0 0 1px 0);
+         @include flexbox();
+         p{
+            @include flex(); 
+            height:100%;
+            color:#2793FF;
+            padding-left:.1rem;
+            i{
+               height: .4rem;
+               display: inline-block;
+               font-size: .2rem;
+               line-height:.36rem; 
+            }
+            b{
+                font-size: .16rem;
+                line-height: .4rem;
+            }
+         }
+         span{
+            width: .65rem;
+            height:100%;
+            font-weight: 100;
+            font-size: .12rem;
+            color: #70706F; 
+            line-height: .4rem;
+         }
+     }
+     .phvip_list{
+         height: 1.45rem;
+         width:100%;
+         background: #fff;
+         overflow-x:scroll;
+         ul{
+             @include flexbox();                 
+             height: 100%;
+             width:210%;
+             li{
+                 @include flex();
+                 height: 100%;
+                 @include flexbox(); 
+                 @include flex-direction(column);
+                 text-align: center;   
+                 a{
+                    @include flexbox();
+                    @include justify-content(center);
+                    @include align-items(center);
+                    width:100%;
+                    height:1rem;
+                    img{
+                        width:.8rem;
+                    } 
+                 }   
+                 i{
+                     @include flex();
+                     color:$base-color;
+                     width:100%; 
+                 }   
+                 span{
+                      @include flex();
+                      width:100%;
+                      font-weight: 100;
+                      font-size: .12rem;
+                      color: #70706F; 
+                 }
+             }
+         }
+     }
+     .phvip_goods{
+         margin-top:.1rem;
+         width:100%;
+         height:1.35rem;
+         @include border(0 0 1px 0);
+         background: #fff;
+         ul{
+             width:100%;
+             height: 100%;
+             @include flexbox(); 
+             li{
+                 @include flex();
+                 &:first-child{
+                    @include border(0 1px 0 0); 
+                 }
+                 &:last-child{
+                    @include border(0 0 0 1px);  
+                 }
+             }
+         }
+     }
+     .markstreet{
+         width:100%;
+         height: 0.45rem;
+         @include flexbox();
+         background: #fff;
+         p{
+             width:.85rem;
+             height: 100%;
+             font-size:.16rem;
+             text-align: center;
+             line-height: .45rem;
+             @include border(0 1px 0 0);
+         }
+         .phvip_goodslist{
+             width:100%;
+             height:100%;
+             overflow-x:scroll;  
+             background: yellow;
+             @include flex();
+             ul{  
+                 width:132%;
+                 heigth:100%;
+                 @include flexbox();
+                 li{
+                     @include flex();
+    
+                 }
+             }
+         }
+     }
+}
