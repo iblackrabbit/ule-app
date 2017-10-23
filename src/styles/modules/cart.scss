@@ -1,0 +1,25 @@
+.m-cart{
+    @include flex();
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    header{
+        border-bottom: 1px solid #b2b2b2;
+        @include flexbox();
+        @include flex-direction();
+        @include justify-content(center);
+        @include align-items(center); 
+        position: relative;
+        height:.64rem;
+        h4{
+            font-size: .17rem;
+            font-weight:normal;
+        }
+        span{
+            width: .6rem;
+            position: absolute;
+            right: .19rem;
+            font-size: .13rem;
+        }
+    }
+  }

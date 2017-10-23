@@ -42,17 +42,14 @@ let publicModule = {
                     }
                 ]
             },
-
-          // 加载Vue 单文件组件
+            // 加载Vue 单文件组件
             {
                 test: /\.vue$/,
                 exclude: /node_modules/, // 排除node_modules下.js的解析
                 use: [{
-                loader: 'vue-loader'
+                    loader: 'vue-loader'
                 }]
             },
-
-
             //加载scss
             {
                 test: /\.scss$/,
@@ -79,7 +76,6 @@ let publicModule = {
                     name: 'media/mp4/[name].[ext]'
                 }
             },
-
             // 加载iconfont
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -90,6 +86,12 @@ let publicModule = {
                 }
             }
         ]
+    },
+    // externals
+    externals: {
+        'vue': 'window.Vue',
+        'vue-router': 'window.VueRouter',
+        'axios': 'window.axios'
     },
     plugins: [
         //生成抽离文本文件插件的实例
@@ -103,7 +105,7 @@ let publicModule = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html'
-        }),
+        })
         //代码压缩
         // new webpack.optimize.UglifyJsPlugin()
     ]
