@@ -22,6 +22,11 @@ let publicModule = {
     },
     //devtool 输出独立文件
     devtool: 'source-map',
+    externals : {
+    	'vue' : 'window.Vue',
+    	'vue-router' : 'window.VueRouter',
+    	'axios' : 'window.axios'
+    },
     //配置模块
     module: {
         rules: [
@@ -115,12 +120,9 @@ var devserver = { //配置webserver
         contentBase: __dirname + outputdir,
         noInfo: true,
         proxy: {
-            '/api': {
-                target: 'https://api.douban.com/',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
+            '/item': {
+                target: 'http://m.ule.com/',
+                changeOrigin: true
             },
             '/vip': {
                 target: 'http://localhost:9000/',

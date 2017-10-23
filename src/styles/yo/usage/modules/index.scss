@@ -1,0 +1,18 @@
+.m-index {
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
+
+  header {
+    height: .44rem;
+    background: #00b38a;
+  }
+  section {
+    background: #fff;
+    @include flex();
+  }
+  footer {
+    height: .44rem;
+    background: #f6f6f6;
+  }
+}

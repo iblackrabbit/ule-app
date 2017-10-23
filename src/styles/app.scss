@@ -1,3 +1,12 @@
-@import "./yo/base.scss";
-@import "./yo/variables.scss";
-@import "./yo/reset.scss";
+@import './yo/usage/core/reset.scss';
+@import './modules/common.scss';
+
+/*details start*/
+@import './modules/details/det-footer.scss';
+@import './modules/details/det-headerEntry.scss';
+@import './modules/details/det-imgInfo.scss';
+@import './modules/details/det-keyInfo.scss';
+@import './modules/details/det-utils.scss';
+
+/*details end*/
+
