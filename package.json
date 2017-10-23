@@ -36,6 +36,8 @@
     "webpack": "^3.7.1"
   },
   "dependencies": {
+    "axios": "^0.17.0",
+    "mint-ui": "^2.2.9",
     "vue": "^2.5.2"
   }
 }

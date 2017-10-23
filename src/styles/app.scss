@@ -1,3 +1,17 @@
-@import "./yo/base.scss";
-@import "./yo/variables.scss";
-@import "./yo/reset.scss";
+@import "./yo/usage/core/reset";
+
+
+@import "./modules/common.scss";
+
+
+@import "./modules/index/index.scss";
+@import "./modules/index/farmprd.scss";
+@import "./modules/index/goodshop.scss";
+@import "./modules/index/index-footer.scss";
+@import "./modules/index/index-header.scss";
+@import "./modules/index/index-nav.scss";
+@import "./modules/index/maybeyoulike.scss";
+@import "./modules/index/phonevip.scss";
+@import "./modules/index/seckill.scss";
+@import "./modules/index/topslideshow.scss";
+

@@ -116,7 +116,7 @@ var devserver = { //配置webserver
         noInfo: true,
         proxy: {
             '/api': {
-                target: 'https://api.douban.com/',
+                target: 'http://static-content.ulecdn.com/',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''
