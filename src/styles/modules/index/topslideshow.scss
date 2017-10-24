@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.slideshow {
+  width: 100%;
+  height: 1.75rem;
+  .slideshow_1 {
+    width: 100%;
+    height: 100%;
+    background: url("http://localhost:4000/media/images/topslide_1.jpg") no-repeat;
+    background-size: cover;
+  }
+  .slideshow_2 {
+    width: 100%;
+    height: 100%;
+    background: url("http://localhost:4000/media/images/topslide_2.jpg") no-repeat;
+    background-size: cover;
+  }
+  .slideshow_3 {
+    width: 100%;
+    height: 100%;
+    background: url("http://localhost:4000/media/images/topslide_3.jpg") no-repeat;
+    background-size: cover;
+  }
+  .slideshow_4 {
+    width: 100%;
+    height: 100%;
+    background: url("http://localhost:4000/media/images/topslide_4.jpg") no-repeat;
+    background-size: cover;
+  }
+}

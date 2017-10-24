@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+
+.details{
+    height:100%;
+    @include flexbox();
+    @include flex-direction(column);
+    header{
+        height:.66rem;
+        line-height:.41rem;
+        font-size:.16rem;
+        text-align:center;
+        border-bottom: 1px solid #b2b2b2;
+        padding:.23rem .22rem 0;
+        h4{
+            width: .55rem;
+            display: inline-block;
+            &:nth-of-type(2){
+                margin-left: .28rem;
+            }
+            &.active{
+                border-bottom:2px solid;
+                border-color: $base-color;
+                color: $base-color;
+            }
+        }
+        span{
+            width: .22rem;
+            height: .20rem;
+            vertical-align: middle;
+            i{
+                font-size: .22rem;              
+            }
+            &.back{
+                float: left;
+                i{
+                    color: #414141;
+                }
+            }
+            &.share{
+                float: right;
+                color: #333;
+            }
+        }
+    }
+    section{
+        @include flex();
+        width:100%;
+        overflow-y:scroll;
+        .detail-img{
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+    }
+    footer{
+        height:.50rem;
+    }
+}
