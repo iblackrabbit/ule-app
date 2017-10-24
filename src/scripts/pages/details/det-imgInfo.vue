@@ -16,7 +16,7 @@
 		props : ['id'],
 		data : function(){
 			return {
-				imgData : [{imgUrl:"https://pic.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_xl.jpg"}]
+				imgData : this.id
 			}
 		},
 		methods : {  //单击事件等

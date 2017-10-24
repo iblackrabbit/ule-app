@@ -13,6 +13,11 @@
 
 $base-color : #e1262b;
 
+@mixin opacity($val){
+    opacity : $val;
+    filter : alpha(opacity=$val*100);
+}
+
 /*定义公共样式*/
 .fl{
     float: left;

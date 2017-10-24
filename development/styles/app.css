@@ -860,9 +860,10 @@ html {
 .det-banner {
   width: 100%;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  overflow-x: scroll; }
   .det-banner .det-ulImg {
-    width: 200%; }
+    width: 100%; }
     .det-banner .det-ulImg::after {
       display: block;
       overflow: hidden;
@@ -871,7 +872,7 @@ html {
       content: " "; }
     .det-banner .det-ulImg li {
       float: left;
-      width: 50%; }
+      width: 100%; }
       .det-banner .det-ulImg li a {
         display: block; }
         .det-banner .det-ulImg li a img {
@@ -885,6 +886,9 @@ html {
     z-index: 999;
     height: .1rem;
     width: 100%;
+    text-indent: -99999px;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
     background-image: linear-gradient(to top, #e2e0e1, #fefcfd); }
 
 .det-keyinfo {
@@ -1012,6 +1016,8 @@ html {
     font-size: .11rem; }
     .det-keyinfo .det-drag p:nth-child(2) {
       font-weight: 900; }
+      .det-keyinfo .det-drag p:nth-child(2) span {
+        display: none; }
 
 /*goto-shop.vue 模块*/
 .det-gotoshop {

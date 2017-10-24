@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -203,196 +203,6 @@ module.exports = g;
 /* 2 */
 /***/ (function(module, exports) {
 
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -472,12 +282,12 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_dist_vue_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_dist_vue_js__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_dist_vue_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_dist_vue_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_router__);
@@ -511,7 +321,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue_dist_vue_js___default.a({
 }).$mount('#details');
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
@@ -11067,10 +10877,10 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(5).setImmediate))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -11123,13 +10933,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(7);
+__webpack_require__(6);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -11319,7 +11129,197 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
 
 /***/ }),
 /* 8 */
@@ -11374,7 +11374,7 @@ if(false) {
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(undefined);
+exports = module.exports = __webpack_require__(2)(undefined);
 // imports
 
 
@@ -11863,7 +11863,7 @@ module.exports = function (css) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_det_headerEntry_vue__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f11fb41a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_det_headerEntry_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f11fb41a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_det_headerEntry_vue__ = __webpack_require__(44);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -11916,10 +11916,8 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__det_footer_vue__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__det_imgInfo_vue__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__det_keyInfo_vue__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jsonp__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jsonp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_jsonp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 //
 //
 //
@@ -11940,7 +11938,6 @@ if (false) {(function () {
 //
 //
 //
-
 
 
 
@@ -11950,10 +11947,15 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
 	data: function () {
 		return {
-			dataList: []
+			dataList: [],
+			//				listId : 3006843,  //黄桃
+			listId: 912051
 		};
 	},
-	methods: {//单击事件等
+	methods: { //单击事件等
+		j(res) {
+			this.dataList = res;
+		}
 	},
 	components: {
 		detailFooter: __WEBPACK_IMPORTED_MODULE_0__det_footer_vue__["a" /* default */],
@@ -11961,23 +11963,20 @@ if (false) {(function () {
 		detailInfo: __WEBPACK_IMPORTED_MODULE_2__det_keyInfo_vue__["a" /* default */]
 	},
 	mounted() {
-		/*axios({
-  	url : 'item/searchItemsByListId.do',
-  	method : 'get',
-  	params : {
-  		jsonApiCallback : "j",
-  			listId : "3006843",
-  			appkey : "4b9f40822ddd5cd5",
-  			version_no : "apr_2010_build01",
-  			_ : "1506153953037"
-  	}
-  	
-  }).then((res)=>{
-  	this.dataList = res;
-  	console.log(res.data.slice(-1));
-  })*/
-		__WEBPACK_IMPORTED_MODULE_3_jsonp___default()('http://m.ule.com/item/searchItemsByListId.do?jsonApiCallback=jsonp1&listId=2928201&appkey=4b9f40822ddd5cd5&version_no=apr_2010_build01&_=1505956667492', null, function (data) {
-			console.log(data);
+		__WEBPACK_IMPORTED_MODULE_3_axios___default()({
+			url: 'item/searchItemsByListId.do',
+			method: 'get',
+			params: {
+				jsonApiCallback: "j",
+				listId: this.listId,
+				appkey: "4b9f40822ddd5cd5",
+				version_no: "apr_2010_build01",
+				_: "1506153953037"
+			}
+
+		}).then(res => {
+			//this.dataList = JSON.parse(res.data.substr(2,res.data.length-3));
+			eval('this.' + res.data);
 		});
 	}
 });
@@ -12196,11 +12195,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	props: ['id'],
@@ -12209,11 +12203,20 @@ if (false) {(function () {
 			imgData: this.id
 		};
 	},
-	methods: {//单击事件等
-
+	methods: { //单击事件等
+		calcUlWidth(length) {
+			this.$refs.ulul.style.width = length * 100 + "%";
+			for (var i = 0; i < this.$refs.ulul.children.length; i++) {
+				this.$refs.ulul.children[i].style.width = 100 / length + "%";
+			}
+		}
 	},
-	components: {
-		//			Position : position
+	computed: {},
+	components: {},
+	mounted() {},
+	updated() {
+		this.imgData = this.id.itemInfo[0].image;
+		this.calcUlWidth(this.imgData.length);
 	}
 });
 
@@ -12226,42 +12229,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "det-banner" }, [
-      _c("ul", { staticClass: "det-ulImg" }, [
-        _c("li", [
+  return _c("div", { staticClass: "det-banner" }, [
+    _c(
+      "ul",
+      { ref: "ulul", staticClass: "det-ulImg" },
+      _vm._l(_vm.imgData, function(value, index) {
+        return _c("li", [
           _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://pic.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_xl.jpg"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://pic.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_xl.jpg"
-              }
-            })
+            _c("img", { attrs: { src: value.imgUrl } })
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mark" })
-    ])
-  }
-]
+      })
+    ),
+    _vm._v(" "),
+    _c("p", { staticClass: "mark" }, [_vm._v(_vm._s(_vm.id))])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -12401,22 +12385,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -12424,19 +12392,133 @@ if (false) {(function () {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+	props: ['id', "listid"],
 	data: function () {
 		return {
-			//				msg : 'aa'
+			dataList: this.id,
+			listId: this.listid,
+			storeId: 0,
+			//				isShowFree : true,
+			//				isShowListSubTitle : true,
+			itemInfo: "",
+			reducePri: 0,
+			items: [],
+			payments: {
+				"99": "邮乐卡支付",
+				"10": "邮储快捷",
+				"12": "快捷支付"
+			},
+			payment: [],
+			evaluateData: {},
+			evaluaLength: 1
 		};
 	},
-	methods: {//单击事件等
-
+	methods: { //单击事件等
+		j(res) {
+			//获取评论数据
+			this.evaluateData = res;
+			this.evaluaLength = this.evaluateData.totalCount > 1 ? 2 : 1;
+			//				console.log(this.evaluateData);
+		},
+		//计算评价星星个数
+		iconNum(leng) {
+			return Number(leng);
+		}
 	},
 	components: {
 		gotoShop: __WEBPACK_IMPORTED_MODULE_0__utils_goto_shop_vue__["a" /* default */],
 		hasChoice: __WEBPACK_IMPORTED_MODULE_1__utils_has_choice_vue__["a" /* default */],
 		sendTo: __WEBPACK_IMPORTED_MODULE_2__utils_send_to_vue__["a" /* default */],
 		recommend: __WEBPACK_IMPORTED_MODULE_3__utils_det_recom_vue__["a" /* default */]
+	},
+	computed: {
+		//是否包邮
+		isShowFree() {
+			if (this.dataList.serviceLabels) {
+				return this.dataList.serviceLabels.length == 1 ? true : false;
+			} else {
+				return false;
+			}
+		},
+		//是否显示提示信息
+		isShowListSubTitle() {
+			return this.dataList.listingSubTitle ? true : false;
+		},
+		//计算优惠差价
+		calcReducePri() {
+			if (this.itemInfo.salePrice) {
+				return (this.itemInfo.marketPrice - this.itemInfo.salePrice).toFixed(1);
+			}
+		},
+		//确定支付方式
+		surePayFor() {
+			if (this.dataList.payments) {
+				this.items = this.dataList.payments.split(" ");
+				this.payment = [];
+				for (var i = 0; i < this.items.length; i++) {
+					this.payment.push(this.payments[this.items[i]]);
+				}
+			}
+		}
+	},
+	mounted() {
+		var that = this;
+		axios({
+			url: '/api/mobile/commentQuery.do',
+			method: 'get',
+			params: {
+				jsonApiCallback: "j",
+				productId: that.listId,
+				start: "1",
+				end: "2",
+				appkey: "c8574b95e0544ae7",
+				version_no: "apr_2010_build01",
+				_: "1505954135364"
+
+			}
+		}).then(res => {
+			eval("this." + res.data);
+		});
+		axios({
+			url: '/item/searchItems.do',
+			method: 'get',
+			params: {
+				jsonApiCallback: "j",
+				storeId: that.storeId,
+				sort: "2",
+				start: "1",
+				end: "6",
+				appkey: "4b9f40822ddd5cd5",
+				version_no: "apr_2010_build01",
+				_: "1505956667555"
+
+			}
+		}).then(res => {
+			eval("this." + res.data);
+			//				console.log(res.data);
+		});
+	},
+	updated() {
+		this.dataList = this.id;
+		this.storeId = this.dataList.storeId;
+		console.log(this.storeId);
+		//显示超市价格，不要试图在VM中直接访问数组里的元素,需要提前存储一下这个数组
+		this.dataList.itemInfo && (this.itemInfo = this.dataList.itemInfo[0]);
+
+		//			var dataDet = this.dataList;
+		//是否包邮
+		//			this.isShowFree = this.dataList.serviceLabels.length == 1 ? true : false;
+		//是否显示提示信息
+		//			this.isShowListSubTitle = this.dataList.listingSubTitle == "" ? false : true;
+		//计算优惠差价
+		//			this.reducePri = (this.itemInfo.marketPrice-this.itemInfo.salePrice).toFixed(1);
+		//确定支付方式
+		//			this.items = this.dataList.payments.split(" ");
+		//			this.payment = [];
+		/*for(var i=0;i<this.items.length;i++){
+  	this.payment.push(this.payments[this.items[i]]);
+  }*/
+		//			console.log(this.dataList);
 	}
 });
 
@@ -12797,7 +12879,6 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_det_recom_vue__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_det_recom_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_det_recom_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e727e4c4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_det_recom_vue__ = __webpack_require__(41);
 var disposed = false
 function injectStyle (ssrContext) {
@@ -12818,7 +12899,7 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_det_recom_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_det_recom_vue__["a" /* default */],
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e727e4c4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_det_recom_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
@@ -12877,12 +12958,12 @@ if(false) {
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(true);
+exports = module.exports = __webpack_require__(2)(true);
 // imports
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"det-recom.vue","sourceRoot":""}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"det-recom.vue","sourceRoot":""}]);
 
 // exports
 
@@ -13143,8 +13224,9 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 /* 40 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 //
 //
 //
@@ -13162,41 +13244,45 @@ module.exports = function listToStyles (parentId, list) {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	props: ["id"],
+	data: function () {
+		return {
+			//				listid : this.id,
+			listid: 7687,
+			simiData: {}
+		};
+	},
+	methods: {
+		j(res) {
+			this.simiData = res.listInfo.listInfos;
+			console.log(res);
+		}
+	},
+	mounted() {
+		console.log(this.listid);
+		var that = this;
+		axios({
+			url: '/item/searchItems.do',
+			method: 'get',
+			params: {
+				jsonApiCallback: "j",
+				storeId: that.listid,
+				sort: "2",
+				start: "1",
+				end: "5",
+				appkey: "4b9f40822ddd5cd5",
+				version_no: "apr_2010_build01",
+				_: "1505956667555"
+
+			}
+		}).then(res => {
+			eval("this." + res.data);
+		});
+	},
+	updated() {}
+});
 
 /***/ }),
 /* 41 */
@@ -13207,136 +13293,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "det-recommend" }, [
-      _c("p", { staticClass: "self-recom" }, [_vm._v("本店推荐")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "det-warp" }, [
-        _c("div", { staticClass: "det-recom" }, [
-          _c("a", { attrs: { href: "javascript:;" } }, [
+  return _c("div", { staticClass: "det-recommend" }, [
+    _c("p", { staticClass: "self-recom" }, [_vm._v("本店推荐")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "det-warp" }, [
+      _c(
+        "div",
+        { staticClass: "det-recom" },
+        _vm._l(_vm.simiData, function(value) {
+          return _c("a", { attrs: { href: "javascript:;" } }, [
             _c("dl", [
-              _c("dt", [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"
-                  }
-                })
-              ]),
+              _c("dt", [_c("img", { attrs: { src: value.imgUrl } })]),
               _vm._v(" "),
               _c("dd", { staticClass: "goods-det" }, [
-                _vm._v("良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮")
+                _vm._v(_vm._s(value.listName))
               ]),
               _vm._v(" "),
-              _c("dd", { staticClass: "min-price" }, [_vm._v("¥17.90")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("dl", [
-              _c("dt", [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "goods-det" }, [
-                _vm._v("良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮")
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "min-price" }, [_vm._v("¥17.90")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("dl", [
-              _c("dt", [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "goods-det" }, [
-                _vm._v("良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮")
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "min-price" }, [_vm._v("¥17.90")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("dl", [
-              _c("dt", [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "goods-det" }, [
-                _vm._v("良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮")
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "min-price" }, [_vm._v("¥17.90")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("dl", [
-              _c("dt", [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "goods-det" }, [
-                _vm._v("良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮")
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "min-price" }, [_vm._v("¥17.90")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "javascript:;" } }, [
-            _c("dl", [
-              _c("dt", [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "goods-det" }, [
-                _vm._v("良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮")
-              ]),
-              _vm._v(" "),
-              _c("dd", { staticClass: "min-price" }, [_vm._v("¥17.90")])
+              _c("dd", { staticClass: "min-price" }, [
+                _vm._v("¥" + _vm._s(value.salePrice) + _vm._s(_vm.listid))
+              ])
             ])
           ])
-        ])
-      ])
+        })
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -13360,21 +13343,137 @@ var render = function() {
     "div",
     { staticClass: "det-keyinfo", attrs: { dataTie: "ab" } },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "det-topinfo" }, [
+        _c("p", { staticClass: "det-title" }, [
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isShowFree,
+                  expression: "isShowFree"
+                }
+              ],
+              staticClass: "det-item"
+            },
+            [_vm._v("包邮")]
+          ),
+          _vm._v("\n\t\t\t" + _vm._s(_vm.dataList.listName) + "\n\t\t")
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.isShowListSubTitle,
+                expression: "isShowListSubTitle"
+              }
+            ],
+            staticClass: "det-message"
+          },
+          [_vm._v(_vm._s(_vm.dataList.listingSubTitle))]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "det-max-price" }, [
+          _c("span", [_vm._v("¥" + _vm._s(_vm.itemInfo.marketPrice))]),
+          _c("i", { staticClass: "iconfont" }, [_vm._v("")])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "det-min-price" }, [
+          _c("span", [_vm._v("¥" + _vm._s(_vm.itemInfo.salePrice))]),
+          _c("strong", [_vm._v("已优惠" + _vm._s(_vm.calcReducePri) + "元")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "det-serve-info" }, [
+          _c("span", { staticClass: "det-serve" }, [_vm._v("服务")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "det-after-sales" }, [
+            _vm._v("\n\t\t\t\t由\n\t\t\t\t"),
+            _c("span", [_vm._v(_vm._s(_vm.dataList.merchantName))]),
+            _vm._v(
+              "\n\t\t\t\t配送并提供售后服务。商品价格与库存最终以实际下单支付为准。本商品由邮乐网入驻商家提供。\n\t\t\t"
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("has-choice"),
       _vm._v(" "),
       _c("send-to"),
       _vm._v(" "),
-      _vm._m(1),
+      _c(
+        "p",
+        { staticClass: "det-payfor", attrs: { title: _vm.surePayFor } },
+        _vm._l(_vm.payment, function(value) {
+          return _c("span", [
+            _c("i", { staticClass: "iconfont" }, [_vm._v("")]),
+            _vm._v(_vm._s(value) + "\n\t\t")
+          ])
+        })
+      ),
       _vm._v(" "),
-      _vm._m(2),
+      _vm.evaluateData.returnMessage == "操作成功"
+        ? _c("div", { staticClass: "det-appraise" }, [
+            _c("p", { staticClass: "det-appr-title" }, [
+              _c("span", { staticClass: "fl" }, [
+                _vm._v("商品评价("),
+                _c("i", [_vm._v(_vm._s(_vm.evaluateData.totalCount))]),
+                _vm._v(")")
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "det-commit" },
+              _vm._l(_vm.evaluateData.commentInfo, function(value) {
+                return _c("li", [
+                  _c("div", { staticClass: "det-star" }, [
+                    _c("p", { staticClass: "det-pict fl" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "//my.ule.com/myid/images/default_48X48.gif"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(value.usrName))])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      { staticClass: "det-nice-star fr" },
+                      _vm._l(_vm.iconNum(value.productQuality), function(i) {
+                        return _c("i", { staticClass: "iconfont" }, [
+                          _vm._v("")
+                        ])
+                      })
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "det-text" }, [
+                    _vm._v(_vm._s(value.commentContent))
+                  ])
+                ])
+              })
+            )
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c("goto-shop"),
       _vm._v(" "),
-      _c("recommend"),
+      _c("recommend", { attrs: { id: _vm.storeId } }),
       _vm._v(" "),
-      _vm._m(3)
+      _c("div", { staticClass: "det-drag" }, [
+        _c("p", [_vm._v("拖动查看图文详情")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("......"), _c("span", [_vm._v(_vm._s(_vm.id))])])
+      ])
     ],
     1
   )
@@ -13384,123 +13483,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "det-topinfo" }, [
-      _c("p", { staticClass: "det-title" }, [
-        _c("span", { staticClass: "det-item" }, [_vm._v("包邮")]),
-        _vm._v("\n\t\t\t良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮\n\t\t")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "det-message" }, [_vm._v("无防腐剂、甜蜜素、色素，孕妇宝宝可食！")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "det-max-price" }, [
-        _c("span", [_vm._v("¥29.90")]),
-        _c("i", { staticClass: "iconfont" }, [_vm._v("")])
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "det-min-price" }, [
-        _c("span", [_vm._v("¥17.90")]),
-        _c("strong", [_vm._v("已优惠12.00元")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "det-serve-info" }, [
-        _c("span", { staticClass: "det-serve" }, [_vm._v("服务")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "det-after-sales" }, [
-          _vm._v("\n\t\t\t\t由\n\t\t\t\t"),
-          _c("span", [_vm._v("上海良禾食品专柜")]),
-          _vm._v(
-            "\n\t\t\t\t配送并提供售后服务。商品价格与库存最终以实际下单支付为准。本商品由邮乐网入驻商家提供。\n\t\t\t"
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "det-payfor" }, [
-      _c("span", [
-        _c("i", { staticClass: "iconfont" }, [_vm._v("")]),
-        _vm._v("邮乐卡支付\n\t\t")
-      ]),
-      _vm._v(" "),
-      _c("span", [
-        _c("i", { staticClass: "iconfont" }, [_vm._v("")]),
-        _vm._v("邮储快捷\n\t\t")
-      ]),
-      _vm._v(" "),
-      _c("span", [
-        _c("i", { staticClass: "iconfont" }, [_vm._v("")]),
-        _vm._v("快捷支付\n\t\t")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "det-appraise" }, [
-      _c("p", { staticClass: "det-appr-title" }, [
-        _c("span", { staticClass: "fl" }, [
-          _vm._v("商品评价("),
-          _c("i", [_vm._v("2053")]),
-          _vm._v(")")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "fr" }, [
-          _vm._v("查看全部评价"),
-          _c("i", { staticClass: "iconfont" }, [_vm._v("")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "det-commit" }, [
-        _c("li", [
-          _c("div", { staticClass: "det-star" }, [
-            _c("p", { staticClass: "det-pict fl" }, [
-              _c("img", {
-                attrs: { src: "//my.ule.com/myid/images/default_48X48.gif" }
-              }),
-              _vm._v(" "),
-              _c("span", [_vm._v("钱***新")])
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "det-nice-star fr" }, [
-              _c("i", { staticClass: "iconfont" }, [_vm._v("")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "det-text" }, [_vm._v("性价比高，发货速度快，满意！")])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "det-star" }, [
-            _c("p", { staticClass: "det-pict fl" }, [
-              _c("img", {
-                attrs: { src: "//my.ule.com/myid/images/default_48X48.gif" }
-              }),
-              _vm._v(" "),
-              _c("span", [_vm._v("钱***新")])
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "det-nice-star fr" }, [
-              _c("i", { staticClass: "iconfont" }, [_vm._v("")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "det-text" }, [_vm._v("性价比高，发货速度快，满意！")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "det-drag" }, [
-      _c("p", [_vm._v("拖动查看图文详情")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("......")])
+    return _c("span", { staticClass: "fr" }, [
+      _vm._v("查看全部评价"),
+      _c("i", { staticClass: "iconfont" }, [_vm._v("")])
     ])
   }
 ]
@@ -13516,673 +13501,12 @@ if (false) {
 
 /***/ }),
 /* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Module dependencies
- */
-
-var debug = __webpack_require__(44)('jsonp');
-
-/**
- * Module exports.
- */
-
-module.exports = jsonp;
-
-/**
- * Callback index.
- */
-
-var count = 0;
-
-/**
- * Noop function.
- */
-
-function noop(){}
-
-/**
- * JSONP handler
- *
- * Options:
- *  - param {String} qs parameter (`callback`)
- *  - prefix {String} qs parameter (`__jp`)
- *  - name {String} qs parameter (`prefix` + incr)
- *  - timeout {Number} how long after a timeout error is emitted (`60000`)
- *
- * @param {String} url
- * @param {Object|Function} optional options / callback
- * @param {Function} optional callback
- */
-
-function jsonp(url, opts, fn){
-  if ('function' == typeof opts) {
-    fn = opts;
-    opts = {};
-  }
-  if (!opts) opts = {};
-
-  var prefix = opts.prefix || '__jp';
-
-  // use the callback name that was passed if one was provided.
-  // otherwise generate a unique name by incrementing our counter.
-  var id = opts.name || (prefix + (count++));
-
-  var param = opts.param || 'callback';
-  var timeout = null != opts.timeout ? opts.timeout : 60000;
-  var enc = encodeURIComponent;
-  var target = document.getElementsByTagName('script')[0] || document.head;
-  var script;
-  var timer;
-
-
-  if (timeout) {
-    timer = setTimeout(function(){
-      cleanup();
-      if (fn) fn(new Error('Timeout'));
-    }, timeout);
-  }
-
-  function cleanup(){
-    if (script.parentNode) script.parentNode.removeChild(script);
-    window[id] = noop;
-    if (timer) clearTimeout(timer);
-  }
-
-  function cancel(){
-    if (window[id]) {
-      cleanup();
-    }
-  }
-
-  window[id] = function(data){
-    debug('jsonp got', data);
-    cleanup();
-    if (fn) fn(null, data);
-  };
-
-  // add qs component
-  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
-  url = url.replace('?&', '?');
-
-  debug('jsonp req "%s"', url);
-
-  // create script
-  script = document.createElement('script');
-  script.src = url;
-  target.parentNode.insertBefore(script, target);
-
-  return cancel;
-}
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * This is the web browser implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(45);
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
-
-/**
- * Colors.
- */
-
-exports.colors = [
-  'lightseagreen',
-  'forestgreen',
-  'goldenrod',
-  'dodgerblue',
-  'darkorchid',
-  'crimson'
-];
-
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
-    return true;
-  }
-
-  // is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
-    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
-    // is firefox >= v31?
-    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
-    // double check webkit in userAgent just in case we are in a worker
-    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-}
-
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-exports.formatters.j = function(v) {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '[UnexpectedJSONParseError]: ' + err.message;
-  }
-};
-
-
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var useColors = this.useColors;
-
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
-
-  if (!useColors) return;
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
-
-  // the final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
-    index++;
-    if ('%c' === match) {
-      // we only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-
-  args.splice(lastC, 0, c);
-}
-
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-function log() {
-  // this hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  try {
-    if (null == namespaces) {
-      exports.storage.removeItem('debug');
-    } else {
-      exports.storage.debug = namespaces;
-    }
-  } catch(e) {}
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  var r;
-  try {
-    r = exports.storage.debug;
-  } catch(e) {}
-
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-  if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = process.env.DEBUG;
-  }
-
-  return r;
-}
-
-/**
- * Enable namespaces listed in `localStorage.debug` initially.
- */
-
-exports.enable(load());
-
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-function localstorage() {
-  try {
-    return window.localStorage;
-  } catch (e) {}
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
-exports.coerce = coerce;
-exports.disable = disable;
-exports.enable = enable;
-exports.enabled = enabled;
-exports.humanize = __webpack_require__(46);
-
-/**
- * The currently active debug mode names, and names to skip.
- */
-
-exports.names = [];
-exports.skips = [];
-
-/**
- * Map of special "%n" handling functions, for the debug "format" argument.
- *
- * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
- */
-
-exports.formatters = {};
-
-/**
- * Previous log timestamp.
- */
-
-var prevTime;
-
-/**
- * Select a color.
- * @param {String} namespace
- * @return {Number}
- * @api private
- */
-
-function selectColor(namespace) {
-  var hash = 0, i;
-
-  for (i in namespace) {
-    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  return exports.colors[Math.abs(hash) % exports.colors.length];
-}
-
-/**
- * Create a debugger with the given `namespace`.
- *
- * @param {String} namespace
- * @return {Function}
- * @api public
- */
-
-function createDebug(namespace) {
-
-  function debug() {
-    // disabled?
-    if (!debug.enabled) return;
-
-    var self = debug;
-
-    // set `diff` timestamp
-    var curr = +new Date();
-    var ms = curr - (prevTime || curr);
-    self.diff = ms;
-    self.prev = prevTime;
-    self.curr = curr;
-    prevTime = curr;
-
-    // turn the `arguments` into a proper Array
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-
-    args[0] = exports.coerce(args[0]);
-
-    if ('string' !== typeof args[0]) {
-      // anything else let's inspect with %O
-      args.unshift('%O');
-    }
-
-    // apply any `formatters` transformations
-    var index = 0;
-    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
-      // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
-      index++;
-      var formatter = exports.formatters[format];
-      if ('function' === typeof formatter) {
-        var val = args[index];
-        match = formatter.call(self, val);
-
-        // now we need to remove `args[index]` since it's inlined in the `format`
-        args.splice(index, 1);
-        index--;
-      }
-      return match;
-    });
-
-    // apply env-specific formatting (colors, etc.)
-    exports.formatArgs.call(self, args);
-
-    var logFn = debug.log || exports.log || console.log.bind(console);
-    logFn.apply(self, args);
-  }
-
-  debug.namespace = namespace;
-  debug.enabled = exports.enabled(namespace);
-  debug.useColors = exports.useColors();
-  debug.color = selectColor(namespace);
-
-  // env-specific initialization logic for debug instances
-  if ('function' === typeof exports.init) {
-    exports.init(debug);
-  }
-
-  return debug;
-}
-
-/**
- * Enables a debug mode by namespaces. This can include modes
- * separated by a colon and wildcards.
- *
- * @param {String} namespaces
- * @api public
- */
-
-function enable(namespaces) {
-  exports.save(namespaces);
-
-  exports.names = [];
-  exports.skips = [];
-
-  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-  var len = split.length;
-
-  for (var i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
-    namespaces = split[i].replace(/\*/g, '.*?');
-    if (namespaces[0] === '-') {
-      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-    } else {
-      exports.names.push(new RegExp('^' + namespaces + '$'));
-    }
-  }
-}
-
-/**
- * Disable debug output.
- *
- * @api public
- */
-
-function disable() {
-  exports.enable('');
-}
-
-/**
- * Returns true if the given mode name is enabled, false otherwise.
- *
- * @param {String} name
- * @return {Boolean}
- * @api public
- */
-
-function enabled(name) {
-  var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
-    if (exports.skips[i].test(name)) {
-      return false;
-    }
-  }
-  for (i = 0, len = exports.names.length; i < len; i++) {
-    if (exports.names[i].test(name)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * Coerce `val`.
- *
- * @param {Mixed} val
- * @return {Mixed}
- * @api private
- */
-
-function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
-  return val;
-}
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000;
-var m = s * 60;
-var h = m * 60;
-var d = h * 24;
-var y = d * 365.25;
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} [options]
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function(val, options) {
-  options = options || {};
-  var type = typeof val;
-  if (type === 'string' && val.length > 0) {
-    return parse(val);
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ? fmtLong(val) : fmtShort(val);
-  }
-  throw new Error(
-    'val is not a non-empty string or a valid number. val=' +
-      JSON.stringify(val)
-  );
-};
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str);
-  if (str.length > 100) {
-    return;
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
-    str
-  );
-  if (!match) {
-    return;
-  }
-  var n = parseFloat(match[1]);
-  var type = (match[2] || 'ms').toLowerCase();
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y;
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d;
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h;
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m;
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s;
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n;
-    default:
-      return undefined;
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd';
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h';
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm';
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's';
-  }
-  return ms + 'ms';
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms';
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return;
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name;
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's';
-}
-
-
-/***/ }),
-/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = window.axios;
 
 /***/ }),
-/* 48 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14200,7 +13524,7 @@ var render = function() {
         [
           _c("detail-img", { attrs: { id: _vm.dataList } }),
           _vm._v(" "),
-          _c("detail-info")
+          _c("detail-info", { attrs: { id: _vm.dataList, listid: _vm.listId } })
         ],
         1
       )

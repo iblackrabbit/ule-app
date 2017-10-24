@@ -29,6 +29,7 @@
         height:.1rem;
         width:100%;
         text-indent:-99999px;
+        @include opacity(.4);
         background-image : linear-gradient(to top,#e2e0e1,#fefcfd);
     }
 }

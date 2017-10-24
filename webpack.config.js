@@ -124,6 +124,10 @@ var devserver = { //配置webserver
                 target: 'http://m.ule.com/',
                 changeOrigin: true
             },
+            '/api' : {
+            	target:'http://service.ule.com',
+            	changeOrigin: true
+            },
             '/vip': {
                 target: 'http://localhost:9000/',
                 changeOrigin: true,

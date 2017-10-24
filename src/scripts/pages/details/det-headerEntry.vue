@@ -9,7 +9,7 @@
 		<section>
 			<div class="detail-img">
 				<detail-img :id="dataList" />
-				<detail-info :id="dataList"></detail-info>
+				<detail-info :id="dataList" :listid="listId"></detail-info>
 			</div>
 		</section>
 		<footer>
@@ -22,13 +22,14 @@
 	import Footer from "./det-footer.vue";
 	import detImg from "./det-imgInfo.vue";
 	import detInfo from "./det-keyInfo.vue";
-	import jsonp from "jsonp";
 	import axios from 'axios';
 
 	export default{
 		data : function(){
 			return {
-				dataList : []
+				dataList : [],
+//				listId : 3006843,  //黄桃
+				listId : 912051
 			}
 		},
 		methods : {  //单击事件等
@@ -47,8 +48,7 @@
 				method : 'get',
 				params : {
 					jsonApiCallback : "j",
-//					listId : "3006843",  黄桃
-					listId : "3064511",
+					listId : this.listId,  
 					appkey : "4b9f40822ddd5cd5",
 					version_no : "apr_2010_build01",
 					_ : "1506153953037"
