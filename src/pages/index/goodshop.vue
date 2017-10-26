@@ -9,7 +9,7 @@
         <div class="goodshop_list">
             <ul>
                 <li>
-                 
+                    <!-- <img src="http://localhost:4000/media/images/goodshop_1.jpg"/>                    -->
                 </li>
             </ul>
         </div>

@@ -9,7 +9,7 @@
 		<section>
 			<div class="detail-img">
 				<detail-img :id="dataList" />
-				<detail-info :id="dataList"></detail-info>
+				<detail-info :id="dataList" :listid="listId"></detail-info>
 			</div>
 		</section>
 		<footer>
@@ -23,17 +23,20 @@
 	import detImg from "./det-imgInfo.vue";
 	import detInfo from "./det-keyInfo.vue";
 	import axios from 'axios';
+	import axiosUtil from '@/utils/axios.utiles.js';
+	import Bus from "@/components/Bus.js";
 
 	export default{
 		data : function(){
 			return {
-				dataList : []
+				dataList : {},
+//				listId : 3006843,  //黄桃
+				listId : 912051,
+				storeId : 0
 			}
 		},
 		methods : {  //单击事件等
-			j(res){
-				this.dataList = res;
-			}
+			
 		},
 		components : {
 			detailFooter : Footer,
@@ -41,22 +44,21 @@
 			detailInfo : detInfo
 		},
 		mounted(){
-			axios({
-				url : 'item/searchItemsByListId.do',
-				method : 'get',
-				params : {
+			var that = this;
+			Bus.$on('listID',function(res){
+				that.listId = res;
+			})
+			axiosUtil(this,'item/searchItemsByListId.do',{
 					jsonApiCallback : "j",
-//					listId : "3006843",  //黄桃
-					listId : "912051",  
+					listId : that.listId,  
 					appkey : "4b9f40822ddd5cd5",
 					version_no : "apr_2010_build01",
 					_ : "1506153953037"
-				}
-				
-			}).then((res)=>{
-				//this.dataList = JSON.parse(res.data.substr(2,res.data.length-3));
-				eval('this.' + res.data);
-			})
+			},'dataList');
+		},
+		updated(){
+			this.storeId = this.dataList.storeId;
+			Bus.$emit("storeId",this.dataList.storeId);
 		}
 	}
 </script>

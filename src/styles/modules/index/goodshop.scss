@@ -43,7 +43,18 @@
         }
     }
     .goodshop_list{
-        width:100%;
+        width:100%!important;
         @include flex();
+        ul{
+            @include flexbox();
+            @include justify-content(center);
+            @include align-items(center);
+            width:100%;
+            height:100%;
+            li{                
+              
+            }
+        }
+
     }
 }

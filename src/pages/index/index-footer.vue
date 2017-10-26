@@ -5,7 +5,7 @@
                 <i class="yo-ico">&#xe6bb;</i>  
                 <b>首页</b>
             </router-link>
-            <router-link to="/category" tag="li">
+            <router-link to="/category" tag="li" >
                 <i class="yo-ico">&#xe806;</i>
                 <b>分类</b>
             </router-link>
@@ -17,7 +17,7 @@
                 <i class="yo-ico">&#xe6af;</i>
                 <b>购物车</b>
             </router-link>
-            <router-link to="/mine" tag="li">
+            <router-link to="/userself" tag="li">
                 <i class="yo-ico">&#xe78b;</i>
                 <b>我的邮乐</b>
             </router-link>

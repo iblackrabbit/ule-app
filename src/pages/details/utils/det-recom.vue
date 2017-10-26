@@ -3,46 +3,11 @@
 		<p class="self-recom">本店推荐</p>
 		<div class="det-warp">
 			<div class="det-recom">
-				<a href="javascript:;">
+				<a href="javascript:;" v-for="value in simiData">
 					<dl>
-						<dt><img src="https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"/></dt>
-						<dd class="goods-det">良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮</dd>
-						<dd class="min-price">¥17.90</dd>
-					</dl>
-				</a>
-				<a href="javascript:;">
-					<dl>
-						<dt><img src="https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"/></dt>
-						<dd class="goods-det">良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮</dd>
-						<dd class="min-price">¥17.90</dd>
-					</dl>
-				</a>
-				<a href="javascript:;">
-					<dl>
-						<dt><img src="https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"/></dt>
-						<dd class="goods-det">良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮</dd>
-						<dd class="min-price">¥17.90</dd>
-					</dl>
-				</a>
-				<a href="javascript:;">
-					<dl>
-						<dt><img src="https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"/></dt>
-						<dd class="goods-det">良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮</dd>
-						<dd class="min-price">¥17.90</dd>
-					</dl>
-				</a>
-				<a href="javascript:;">
-					<dl>
-						<dt><img src="https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"/></dt>
-						<dd class="goods-det">良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮</dd>
-						<dd class="min-price">¥17.90</dd>
-					</dl>
-				</a>
-				<a href="javascript:;">
-					<dl>
-						<dt><img src="https://pic1.ule.com/m/pic/user_800130647/product/prd20170912/09b70c38add795ab_p640x640_sl.jpg"/></dt>
-						<dd class="goods-det">良禾蜂蜜黄桃罐头425g*3 无添加健康新鲜水果罐头包邮</dd>
-						<dd class="min-price">¥17.90</dd>
+						<dt><img :src="value.imgUrl"/></dt>
+						<dd class="goods-det">{{value.listName}}</dd>
+						<dd class="min-price">¥{{value.salePrice}}{{listid}}</dd>
 					</dl>
 				</a>
 			</div>
@@ -51,6 +16,48 @@
 </template>
 
 <script>
+	// import axiosUtil from '@/utils/axios.utiles.js';
+	import Bus from "@/components/Bus.js";
+	import axios from 'axios';
+	export default {
+		props : ["id"],
+		data : function(){
+			return{
+				listid : 0,
+				simiData : {}
+			}
+		},
+		methods : {
+			ja(res){
+				this.simiData = res.listInfo.listInfos;
+			}
+		},
+		mounted(){
+			var that = this;
+			Bus.$on('storeId',function(msg){
+				that.listid = msg;
+				axios({
+					url : '/item/searchItems.do',
+					method : 'get',
+					params : {
+						jsonApiCallback : "ja",
+						storeId : that.listid,
+						sort : "2",
+						start : "1",
+						end : "6",
+						appkey : "4b9f40822ddd5cd5",
+						version_no : "apr_2010_build01",
+						_ : "1505956667555"
+					}
+				}).then((res)=>{
+					eval("that." + res.data);
+				})
+			});
+		},
+		updated(){
+			
+		}
+	}
 </script>
 
 <style>

@@ -1,4 +1,3 @@
-
 'use strict'
 // Template version: 1.1.3
 // see http://vuejs-templates.github.io/webpack for documentation.
@@ -31,7 +30,38 @@ module.exports = {
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/mainhtml': {
+        target: 'http://static-content.ulecdn.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/mainhtml': ''
+        }
+      },
+      '/item': {
+        target: 'http://m.ule.com/',
+        changeOrigin: true
+      },
+      '/api': {
+        target: 'http://service.ule.com',
+        changeOrigin: true
+      },
+
+      '/icon': {
+        target: 'http://10.9.164.56/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/icon': ''
+        }
+      },
+      '/vip': {
+        target: 'http://localhost:9000/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/vip': ''
+        }
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
