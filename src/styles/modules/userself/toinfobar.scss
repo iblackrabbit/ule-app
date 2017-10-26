@@ -1,0 +1,86 @@
+
+    
+.top-info-setting{
+        
+        width: 100%;
+        height: 100%;
+        background:#f3f3f3 ;
+        .mine-tabbar-top{
+        @include flexbox();
+        height:.62rem;
+        width: 100%;
+        background: #e42222;
+        color:#fff;
+        font-size:.1rem;
+            span{
+                &:last-child{
+                    padding-right:.13rem;
+                    padding-top:.22rem;
+                    padding-left:.14rem;
+                }
+                &:first-child{
+                    @include flex();
+                    line-height:.62rem;
+                    padding-left:.25rem;
+                    padding-top:.23rem;
+                    b{
+                        font-size:.1rem;
+                    }
+                }
+            }
+        }
+        .user-photo-setting{
+             @include justify-content(center);
+                      @include align-items(center);
+                      @include flexbox();
+            height:1.15rem;
+           background: #e42222;
+            position: relative;
+            .photo-num{
+                     @include justify-content(center);
+                      @include align-items(center);
+                      @include flexbox();
+                    @include flex-direction(column);
+                .user-photo{
+                        height: .7rem;
+                        width: .7rem;
+                        @include border-radius(50%);
+                        background: #fff;
+                       @include justify-content(center);
+                      @include align-items(center);
+                      @include flexbox();
+                            img{
+                                width: .65rem;
+                                height: .65rem;
+                                @include border-radius(50%);
+                                //vertical-align: middle;
+                            }
+                        }
+                    .user-phoneNumber{
+                        color:#fff;
+                    }
+                }
+                .user-info-detail{
+                        font-size:.12rem;
+                        position: absolute;
+                        right: .28rem;
+                        top:50%;
+                        margin-top:-.12rem;
+                        color:#fff;
+                        span{
+                            &:after{
+                                position:absolute;
+                                content: "";
+                                height:.1rem;
+                                width: .1rem;
+                                right:-.15rem;
+                                top: .04rem;
+                             border-top: .02rem solid #fff;
+                            border-left: .02rem solid #fff;
+                                @include transform(rotate(135deg));
+                            }
+                        }
+                    }
+            }
+           
+}
