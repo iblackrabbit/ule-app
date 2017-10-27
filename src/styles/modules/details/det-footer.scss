@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+
+.footer-addCart{
+    height: 100%;
+    @include flexbox();
+    @include flex-direction();
+    .footer-info{
+        height: 100%;
+        @include flexbox();
+        @include flex-direction();
+        width: 1.52rem;
+        margin-left:-1px;
+        li{
+            @include flex();
+            @include flexbox();
+            @include flex-direction(column);
+            text-align:center;
+            color:#666;
+            border-left:1px solid #999;
+            height:.3rem;
+            margin-top:.1rem;
+            i{
+                line-height: .14rem;
+                font-size: .22rem;
+            }
+            span{
+                font-size: .1rem;
+                line-height: .28rem;
+            }
+            &:nth-child(1) i{
+                color: $base-color;
+            }
+        }
+    }
+    &>span{
+        @include flex();
+        text-align:center;
+        line-height: .5rem;
+        color: #fff;
+        font-size: .14rem;
+        &.addCart{
+            background: #fd4b40;
+        }
+        &.gotoBuy{
+            background: #e1262b;
+        }
+    }
+}

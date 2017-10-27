@@ -1,12 +1,40 @@
-#root {
-    width: 100%;
-    height: 100%;
+#app {
+  width: 100%;
+  height: 100%;
 }
-  
+
+#details {
+  width: 100%;
+  height: 100%;
+}
+
 $base-color: #e1262b;
-  
-  @font-face {
-    font-family: 'yofont';
-    src: url('http://localhost:4000/media/iconfont/iconfont.woff') format('woff'), url('http://localhost:4000/media/iconfont/iconfont.ttf') format('truetype')
-  }
-  
+@font-face {
+  font-family: 'yofont';
+  src: url('/icon/iconfont/iconfont.woff') format('woff'), url('/icon/iconfont/iconfont.ttf') format('truetype')
+}
+
+@mixin opacity($val) {
+  opacity: $val;
+  filter: alpha(opacity=$val*100);
+}
+
+
+/*定义公共样式*/
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.iconfont {
+  font-family: "yofont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}

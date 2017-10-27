@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+.det-keyinfo{
+    width:100%;
+    .det-topinfo{
+        width:100%;
+        padding-top:.14rem;
+        background-color:#fff;
+        .det-title{
+            padding: 0 .1rem;
+            font-size:.13rem;
+            line-height:.20rem;
+            font-weight:bold;
+            margin-bottom:.06rem;
+            .det-item{
+                color: #fff;
+                font-size:.1rem;
+                padding:.03rem .03rem;
+                font-weight:normal;
+                @include border-radius(5px);
+                background-color: $base-color;
+                margin-right:3px;
+            }
+        }
+        .det-message,
+        .det-max-price,
+        .det-min-price{
+            padding: 0 .1rem;
+        }
+        .det-message{
+            font-size:.13rem;
+            color:#808080;
+            line-height:.13rem;
+        }
+        .det-max-price{
+            font-size:.11rem;
+            color:#aaaaaa;
+            line-height:.25rem;
+            span{
+                text-decoration:line-through;
+            }
+            i{
+                margin-left:.13rem;
+                color:$base-color;
+            }
+        }
+        .det-min-price{
+            line-height:.15rem;
+            span{
+                font-size:.15rem;
+                color:$base-color;
+                font-weight:bold;
+            }
+            strong{
+                background-color:$base-color;
+                color:#fff;
+                font-size:.11rem;
+                padding:.03rem .03rem;
+                margin-left:.11rem;
+                font-weight:normal;
+                @include border-radius(5px);
+            }
+        }
+        .det-serve-info{
+            border-top:1px solid #dbdbdb;
+            margin-top:.12rem;
+            padding: .1rem .1rem .1rem;
+            @include flexbox();
+            @include flex-direction();
+            .det-serve{
+                padding:0 .03rem;
+                color:$base-color;
+                border:1px solid $base-color;
+                height:.19rem;
+                @include border-radius(5px);
+                margin-right:.1rem;
+                line-height:.18rem;
+            }
+            p.det-after-sales{
+                @include flex();
+                line-height:.16rem;
+            }
+        }
+    }
+    .det-payfor{
+        background-color :#f7f7f7;
+        height:.41rem;
+        line-height:.41rem;
+        span{
+            i{
+                color:$base-color;
+                margin:0 .04rem 0 .1rem;
+            }
+        }
+    }
+    .det-appraise{
+        margin-top:.1rem;
+        background-color:#fff;
+        .det-appr-title{
+            padding: 0 .1rem;
+            height:.39rem;
+            line-height:.39rem;
+            span{
+                i{
+                    margin-left:.06rem;
+                }
+            }
+        }
+        .det-commit{
+            li{
+                padding: 0 .1rem;
+                height:.86rem;
+                border-top:1px solid #e1e1e1;
+                .det-star{
+                    @include clearfix();
+                    height:.55rem;
+                    line-height:.55rem;
+                    .det-pict{
+                        img{
+                            border-radius:50%;
+                            width:.35rem;
+                            margin-right:.05rem;
+                        }
+                    }
+                    .det-nice-star{
+                        i{
+                            color:$base-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .det-drag{
+        height:.54rem;
+        color:#686868;
+        text-align:center;
+        padding-top:.14rem;
+        font-size:.11rem;
+        p:nth-child(2){
+            font-weight:900;
+            span{
+                display: none;
+            }
+        }
+    }
+}
