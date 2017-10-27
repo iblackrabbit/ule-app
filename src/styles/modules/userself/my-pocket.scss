@@ -1,0 +1,79 @@
+.my-pocket{
+    background: #fff;
+    height: 1rem;
+    width:100%;
+    margin-bottom:.11rem;
+     ul{
+                  height: 100%;
+                  width: 100%;
+                  @include flexbox();
+                  li{
+                      @include flexbox();
+                      @include justify-content(center);
+                      @include align-items(center);
+                      @include flex-direction(column);
+                       
+       
+                      text-align:center;
+                    &:first-child{
+                        width: .98rem;
+                        height: 100%;
+                        background:url("https://i0.ulecdn.com/ulewap/i/p_arrow_bg.png") no-repeat right;
+                       span{
+                           display: inline-block;
+                           width: .5rem;
+                           height: .4rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_wallet.png")  no-repeat;
+                           background-position: center .07rem;
+                           background-size: .32rem 1.97rem;
+                       } 
+                    }  
+                    &:nth-child(2){
+                         @include flex();
+                            span{
+                           display: inline-block;
+                           width: .6rem;
+                           height: .54rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_wallet.png")  no-repeat;
+                            background-position: center -.30rem;
+                            background-size: .39rem 2.03rem;
+                          
+                    }
+                   }
+                    &:nth-child(3){
+                        @include flex();
+                            span{
+                           display: inline-block;
+                           width: .6rem;
+                           height: .54rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_wallet.png")  no-repeat;
+                           background-position: center -.83rem;
+                             background-size: .45rem 2.23rem;
+                       
+                    }
+                    }
+                    &:nth-child(4){
+                           @include flex();
+                               span{
+                           display: inline-block;
+                           width: .6rem;
+                           height: .54rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_wallet.png")  no-repeat;
+                            background-position: center -1.32rem;
+                            background-size: .42rem 2.28rem;
+                    }
+                    }
+                    &:nth-child(5){
+                           @include flex();
+                               span{
+                           display: inline-block;
+                           width: .6rem;
+                           height: .54rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_wallet.png")  no-repeat;
+                               background-position: center -1.51rem;
+                              background-size: .34rem 1.95rem;
+                    }
+                   }
+                }
+            }
+}

@@ -1,0 +1,26 @@
+.icon-list{
+    ul.list1, ul.list2{
+        height: 1.05rem;
+        background: #fff;
+        width: 100%;
+        @include justify-content(center);
+        @include align-items(center);
+        @include flexbox();
+        li{
+            @include justify-content(center);
+             @include align-items(center);
+             @include flexbox();
+            @include flex-direction(column);
+            height: 1.05rem;
+           @include flex();
+            img{
+                 height: .4rem;
+                
+            }
+            span{
+                 padding-top:.15rem ;
+            }
+        }
+    }
+   
+}

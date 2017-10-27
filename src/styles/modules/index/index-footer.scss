@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.index_footer {
+    height: .5rem;
+    background:#F4F4F4;
+    ul {
+      height: 100%;
+      @include border(1px 0 0 0);
+      @include flexbox();
+      li {
+        @include flex();
+        @include flexbox();
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include align-items(center);
+        i {
+          font-size: .22rem;
+          color: #70706F;
+        }
+        b{
+          font-weight: 100;
+          font-size: .12rem;
+          color: #70706F; 
+        }
+        &.active b,
+        &.active i {
+          color: red;
+        }
+      }
+    }
+}

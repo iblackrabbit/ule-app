@@ -1,0 +1,16 @@
+.myUle{
+    height: 100%;
+    @include flex-direction(column);
+    @include flexbox();
+    center{
+         @include flex();
+          @include flex-direction(column);
+          @include flexbox();
+          width: 100%;
+        .fill-blank{
+            @include flex();
+            width: 100%；
+        }  
+    }
+   
+}

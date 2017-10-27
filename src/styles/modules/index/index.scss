@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.m-index {
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
+
+  header {
+    height: .64rem;
+    width: 100%;
+    background: rgba(228,34,34,0.8);
+    font-size: .18rem;
+    color: #fff;
+    text-align: center;
+    z-index:1000;
+    position:fixed;
+    top:0;
+    left:0;
+  }
+
+  section {
+    background: #F5F5F5;
+    @include flex();
+    width: 100%;
+    overflow-y: scroll;
+  }
+}

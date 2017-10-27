@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.farmprd_all{
+    width:100%;
+    height: 3.7rem;
+    margin-top:.1rem;
+    @include flexbox();
+    @include flex-direction(column);
+    .farmprd_title{
+        width:100%;
+        height: 0.4rem;
+        background: #fff;
+        @include flexbox();
+        @include border(0 0 1px 0);
+        p{
+             color:#FFC039;
+             padding-left:.1rem;
+             width:100%!important;
+             height:.4rem; 
+             @include flex();        
+            i{
+               height: 100%;
+               display: inline-block;
+               font-size: .2rem;
+               line-height:.36rem; 
+            }
+            b{
+                font-size: .16rem;
+                line-height: .4rem;
+            }
+        }
+        span{
+            display: inline-block;
+            width:.7rem;
+            height:.4rem;
+            line-height: .4rem;
+            font-size: .12rem;
+            color: #999;
+            font-weight: 400;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                right: .08rem;
+                top: .15rem;
+                width: .07rem;
+                height: .07rem;
+                background: 0 0;
+                border-top: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                transform: rotate(45deg);
+            }     
+
+        }
+
+    }
+    .farmprd_center{
+        width:100%!important;
+        @include flex();
+        @include flexbox();
+        @include flex-direction(column);
+        .farmprd_content{
+            width:100%!important;
+            background: #fff;
+            @include flex();
+            .prd_list{
+                @include flexbox();
+                width:100%;
+             
+                .prd_list_left{
+                    @include flex();
+                    @include border(0 1px 0 0);
+                    width:100%;
+                  
+                    a{
+                        width:100%;                 
+                        img{
+                            width:100%; 
+                            height:100%;                 
+                        }
+                    }
+                }
+                .prd_list_right{
+                    @include flex();
+                    @include flexbox();
+                    @include flex-direction(column);
+                   
+                    width:100%;
+                    .prd_list_top{
+                        width:100%;
+                        height: 1rem;
+                        @include border(0 0 1px 0);
+                        a{
+                            width:100%;
+                            height:100%;
+                            img{
+                                width:100%;
+                                height:100%;
+                            }
+                        }
+                    }
+                    .prd_list_bottom{
+                        @include flex();
+                        width:100%;
+                        @include flexbox();
+                        a{
+                            @include flex();
+                            &:first-child{
+                                @include border(0 1px 0 0);
+                            }
+                            img{
+                                width:100%;
+                                height:100%;
+                            }
+                        }
+                    }
+                }
+            }
+    
+        }
+        .farmprd_bag{
+            width:100%;
+            margin-top:.1rem;
+            height:.8rem;
+            a{
+                width:100%;
+                height:100%;
+                img{
+                    width:100%;
+                 
+                }
+            }
+        }
+    }
+
+}
