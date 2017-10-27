@@ -54,7 +54,7 @@
 		</div>
 		
 		<!--店铺信息  组件-->
-		<goto-shop></goto-shop>
+		<goto-shop :id="dataList.merchantName"></goto-shop>
 		
 		<!--本店商品推荐-->
 		<recommend :id="dataList.storeId"></recommend>
@@ -67,7 +67,7 @@
 		
 		<!--详情页-->
 		<div class="details-img" ref="detImgHeight">
-			<iframe id="iframeimg" frameborder=0 src=https://pic.ule.com/w/item/user_800108590/desc20170109/ddca80492b682c3c.html></iframe>
+			<iframe id="iframeimg" frameborder=0 :src="dataList.listDescUrl"></iframe>
 		</div>
 	</div>
 </template>
@@ -183,8 +183,7 @@
 					type :'changeVal',
 					heightValue : this.scrollTop
 				})
-//				console.log(scrollTop);
-				console.log(this.$store);
+				console.log(this.scrollTop);
 			}
 		},
 		mounted(){
