@@ -109,17 +109,18 @@
 				this.sendData = {
 					shopName : this.dataList.storeName,
 					img : this.showImg,
-					color : this.nowGood.colorName,
-					size : this.sizecart,
+					color : this.nowGood.colorName || "",
+					size : this.sizecart || "",
 					goodTitle : this.dataList.listName,
 					price : this.price,
-					count : this.allNum
+					count : this.allNum,
+					id : this.dataList.listId
 				}
 				this.$store.commit({
 					type : "getCartInfo",
 					cartIn : this.sendData
 				})
-				console.log(this.sendData);
+//				console.log(this.sendData);
 			},
 			addCount(val){
 				this.allNum += val;

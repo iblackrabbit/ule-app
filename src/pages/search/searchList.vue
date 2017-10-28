@@ -22,8 +22,8 @@
 				</ul>
 			</div>
 		</div>
-		<div class="cont-list">
-			<mt-loadmore :bottom-method="loadBottom">
+		<div class="cont-list" v-if="dataload">
+			<mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
 				<ul>
 					<router-link :to="'/detail/'+item.listingId" v-for="item in dataList" :key=1 tag="li">
 						<img :src="item.imgUrl"/>
@@ -33,6 +33,7 @@
 					</router-link>
 				</ul>
 			</mt-loadmore>
+			<p class="overload" v-if="overload">~我们是有底线的~</p>
 		</div>
 	</div>
 </template>
@@ -48,31 +49,44 @@
 		data(){
 			return {
 				valu : this.$route.params.val,
-				dataList : {},
+				dataList : [],
 				allLoaded :false,
 				autoFill : true,
 				priceLtoH : false,
 				isActive:true,
-				nowI : 0
+				dataload:false,
+				nowI : 0,
+				pageNum : 1,
+				overload : false
 			}
 		},
 		mounted(){
-			var that = this;
-			axios({
-				url : '/cat/ajax.html',
-				method : "get",
-				params : {
-					sort : 1,
-					pageIndex : 1,
-					keyword : that.valu,
-					appkey : "4b9f40822ddd5cd5",
-					version_no : "apr_2010_build01"
-				}
-			}).then((res)=>{
-				this.dataList = res.data.resultList;
-			})
+			this.requestData();
 		},
 		methods : {
+			requestData(){
+				var that = this;
+				axios({
+					url : '/cat/ajax.html',
+					method : "get",
+					params : {
+						sort : 1,
+						pageIndex : that.pageNum,
+						keyword : that.valu,
+						appkey : "4b9f40822ddd5cd5",
+						version_no : "apr_2010_build01"
+					}
+				}).then((res)=>{
+					that.dataload =true;
+					if(!res.data.resultList){
+						that.allLoaded = true;
+						that.overload = true;
+					}else{
+						that.dataList = that.dataList.concat(res.data.resultList);
+						that.pageNum++;
+					}
+				})
+			},
 			sendData(){
 				var that = this;
 				axios({
@@ -90,7 +104,9 @@
 				})
 			},
 			loadBottom(){
-				console.log("加载完毕");
+				var that = this;
+				this.requestData();
+				this.$refs.loadmore.onBottomLoaded();
 			},
 			changeActive(val){
 				this.nowI = val;

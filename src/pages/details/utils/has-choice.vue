@@ -2,7 +2,7 @@
 	<div class="det-has-choice det-common">
 		<span class="det-common-text">已选</span>
 		<p class="det-count det-common-cen">
-			425g*3 1件
+			{{this.$store.state.cartInfo.size}}  {{ this.$store.state.cartInfo.color}} * {{this.$store.state.cartInfo.count}}  件
 		</p>
 		<span class="det-dotted" @click="seeNum()"><i class="iconfont">&#xe684;</i></span>
 	</div>
@@ -22,6 +22,8 @@
 				});
 //				console.log(this.$store.state.scrollTop.popup);
 			}
+		},
+		mounted(){
 		}
 	}
 </script>
