@@ -16,7 +16,7 @@
 			</li>
 		</ul>
 		<span class="addCart" @click="addToCart()">加入购物车</span>
-		<span class="gotoBuy">立即购买</span>
+		<span class="gotoBuy" @click="gotoBuy()">立即购买</span>
 		<mt-popup
 		  v-model="popupVisible"
 		  position="bottom">
@@ -79,7 +79,8 @@
 				showImg : "",
 				nowGood : {},
 				itemInfo : {},
-				price : 0
+				price : 0,
+				type : ""
 			}
 		},
 		methods : {  //单击事件等
@@ -101,6 +102,7 @@
 				this.popupVisible = this.$store.state.scrollTop.popup;
 				console.log(this.$store.state.scrollTop.popup)*/
 				this.popupVisible = !this.popupVisible;
+				this.type = "cart";
 //				this.popupVisible = this.$store.state.scrollTop.popup;
 			},
 			sendToCart(){
@@ -120,6 +122,9 @@
 					type : "getCartInfo",
 					cartIn : this.sendData
 				})
+				if(this.type == "buy"){
+					console.log('buy');
+				}
 //				console.log(this.sendData);
 			},
 			addCount(val){
@@ -134,6 +139,10 @@
 				this.nowGood = value;
 				this.showImg = this.dataList.itemInfo[index].image[0].imgUrl;
 				this.price = this.itemInfo[index].salePrice;
+			},
+			gotoBuy(){
+				this.popupVisible = true;
+				this.type = "buy";
 			}
 		},
 		computed : {

@@ -26,7 +26,7 @@
 			<mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
 				<ul>
 					<router-link :to="'/detail/'+item.listingId" v-for="item in dataList" :key=1 tag="li">
-						<img :src="item.imgUrl"/>
+						<a href="javascript:;"><img :src="item.imgUrl"/></a>
 						<p class="title" v-html="item.listingName"></p>
 						<p class="free-send">包邮</p>
 						<p class="price">￥{{item.minPrice}}</p>
