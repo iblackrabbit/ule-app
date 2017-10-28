@@ -27,6 +27,8 @@
 	import axios from 'axios';
 	import axiosUtil from '@/utils/axios.utiles.js';
 	import Bus from "@/components/Bus.js";
+	import { Indicator } from 'mint-ui';
+	
 
 	export default{
 		data : function(){
