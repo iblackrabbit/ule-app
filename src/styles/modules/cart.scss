@@ -4,6 +4,7 @@
   height: 100%;
   width: 100%;
   background: #ffffff;
+
   header {
     border-bottom: 1px solid #b2b2b2;
     @include flexbox();
@@ -52,6 +53,12 @@
             text-align: center;
             color: #cacacf;
           }
+          .cart-circle{
+            font-size:22px;
+          }
+          .active{
+            color:#f30000;
+          }
           h4 {
             @include flex();
             height: 100%;
@@ -66,52 +73,75 @@
             color: #f30000;
           }
         }
-        .cart-detail {
-          @include flex();
-          @include flexbox();
+        .cart-cellswipe {
           width: 100%;
-          height: .89rem;
-          .cart-selected {
-            width: .41rem;
-            height: 100%;
-            line-height: .89rem;
-            text-align: center;
-            color: #cacacf;
-          }
-          dl {
-            @include flex();
-            @include flexbox();
-            dt {
-              img {
-                width: .64rem;
-                height: .64rem;
+          background: none;
+          .mint-cell-wrapper {
+            padding: 0;
+            .mint-cell-value {
+              width: 100%;
+              .cart-detail {
+                @include flex();
+                @include flexbox();
+                width: 100%!important;
+                height: .89rem;
+                mt-cell-swipe {
+                  width: 100%;
+                  height: 100%;
+                }
+                .cart-selected {
+                  width: .41rem;
+                  height: 100%;
+                  line-height: .89rem;
+                  text-align: center;
+                  color: #cacacf;
+                  font-size:22px;
+                }
+                .active{
+                  color:#f30000;
+                }
+                dl {
+                  @include flex();
+                  @include flexbox();
+                  margin-top: .1rem;
+                  dt {
+                    img {
+                      width: .64rem;
+                      height: .64rem;
+                    }
+                  }
+                  dd {
+                    padding-left: .1rem;
+                    @include flex();
+                    font-size: .11rem;
+                    .cart-name {
+                      height: .27rem;
+                      width: 100%;
+                      line-height: .15rem;
+                      @include ellipsis(null, 2);
+                    }
+                    .cart-info {
+                      margin-top: .11rem;
+                      color: #a8a8a8;
+                    }
+                    .cart-price {
+                      margin-top: .11rem;
+                      color: #f30000;
+                    }
+                  }
+                }
+                .cart-touch-delete {
+                  width: .6rem;
+                  height: 100%;
+                  line-height: .89rem;
+                  text-align: center;
+                  color: #cacacf;
+                }
               }
             }
-            dd {
-              padding-left: .1rem;
-              @include flex();
-              font-size: .11rem;
-              .cart-name {
-                height: .27rem;
-                width: 100%;
-                line-height: .15rem;
-                @include ellipsis(null, 2);
-              }
-              .cart-info {
-                margin-top: .11rem;
-                color: #a8a8a8;
-              }
-              .cart-price {
-                color: #f30000;
-              }
-            }
           }
-          .cart-touch-delete {
-            width: .6rem;
-            height: 100%;
+          .mint-cell-swipe-button {
             line-height: .89rem;
-            text-align: center;
-            color: #cacacf;
           }
         }
       }
@@ -129,7 +159,6 @@
           height: 100%;
           width: .81rem;
           text-align: center;
-         
           color: #686868;
           @include justify-content(center);
           @include align-items(center);
@@ -144,13 +173,12 @@
         }
         .cart-total {
           @include flex();
-          p{
-              color: #989898;
+          p {
+            color: #989898;
             span {
-                color: #f30000;
-              }
+              color: #f30000;
+            }
           }
-          
         }
         .cart-pay {
           width: .8rem;

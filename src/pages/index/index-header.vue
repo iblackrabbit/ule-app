@@ -6,7 +6,7 @@
         </div>
         <div class="search_center">
              <i class="yo-ico">&#xe65c;</i>
-             <input type="text" placeholder="搜索商品">
+             <input type="text" placeholder="搜索商品" value="">
         </div>
         <div class="search_right">
             <i class="yo-ico">&#xe689;</i>

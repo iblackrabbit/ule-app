@@ -10,6 +10,8 @@ import userself from '../pages/userself/myUle.vue'
 import category from '../pages/category.vue'
 import detail from '../pages/details/det-headerEntry.vue'
 
+import login from '../pages/login/login.vue'
+
 Vue.use(Router);
 
 export default new Router({
@@ -47,6 +49,11 @@ export default new Router({
       path: '/detail/:id',
       component: detail,
       name: 'detail'
+    },
+    {
+      path: '/login',
+      component: login,
+      name: 'login'
     }
   ]
 })
