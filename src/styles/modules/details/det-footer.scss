@@ -20,12 +20,9 @@
             border-left:1px solid #999;
             height:.3rem;
             margin-top:.1rem;
-<<<<<<< HEAD
-=======
             &.likeactive{
                 color:$base-color;
             }
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
             i{
                 line-height: .14rem;
                 font-size: .22rem;
@@ -33,10 +30,7 @@
             span{
                 font-size: .1rem;
                 line-height: .28rem;
-<<<<<<< HEAD
-=======
                 color:#666666;
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
             }
             &:nth-child(1) i{
                 color: $base-color;
@@ -56,8 +50,6 @@
             background: #e1262b;
         }
     }
-<<<<<<< HEAD
-=======
     .det-addto-cart{
         width:3.75rem;
         &>div{
@@ -161,5 +153,4 @@
             font-size:.17rem;
         }
     }
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 }

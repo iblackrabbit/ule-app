@@ -11,13 +11,8 @@
                               @translate-change="translateChange" 
                               @bottom-status-change="handleBottomChange" ref="loadmore">
                     <ul>
-<<<<<<< HEAD
-                        <!-- <li v-for="list in likelist" v-on:click="sendMsg(list)" > -->
-                        <router-link to="/detail/1" v-for="list in likelist" v-on:click="sendMsg(list)" tag="li">
-=======
                          <!--<li v-for="list in likelist" v-on:click="sendMsg(list.listingId)" >-->   
                         <router-link :to="'/detail/'+list.listingId" v-for="list in likelist" v-on:click="sendMsg(list.listingId)" tag="li" :key="1">
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
                             <div class="youlike_content" >
                                 <a href="javascript:;"><img :src="list.imgUrl" alt=""></a>
                                 <p>{{list.listingName}}</p>
@@ -31,11 +26,7 @@
                                 </div>
                             </div>
                         </router-link>
-<<<<<<< HEAD
                         <!-- </li>              -->
-=======
-                         <!--</li>-->              
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
                     </ul>
 
                     <div slot="bottom" class="mint-loadmore-bottom">
@@ -86,15 +77,9 @@ export default{
             this.moveTranslate = (1 + translateNum / 70).toFixed(2);
         },
         sendMsg(num){
-<<<<<<< HEAD
-            Bus.$emit("listID", num.listingId);        
-        }
-       
-=======
 //      	this.$router.push({name:'detail',query : {id : num}});
 //          Bus.$emit("listID", num.listingId);        
         }       
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
     },
     mounted() {
         axios.get('/mainhtml/mobilead/recommond/indexListingCommentGet',{

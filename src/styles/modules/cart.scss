@@ -4,10 +4,6 @@
   height: 100%;
   width: 100%;
   background: #ffffff;
-<<<<<<< HEAD
-
-=======
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
   header {
     border-bottom: 1px solid #b2b2b2;
     @include flexbox();
@@ -56,15 +52,12 @@
             text-align: center;
             color: #cacacf;
           }
-<<<<<<< HEAD
           .cart-circle{
             font-size:22px;
           }
           .active{
             color:#f30000;
           }
-=======
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
           h4 {
             @include flex();
             height: 100%;
@@ -79,7 +72,6 @@
             color: #f30000;
           }
         }
-<<<<<<< HEAD
         .cart-cellswipe {
           width: 100%;
           background: none;
@@ -149,54 +141,6 @@
           }
           .mint-cell-swipe-button {
             line-height: .89rem;
-=======
-        .cart-detail {
-          @include flex();
-          @include flexbox();
-          width: 100%;
-          height: .89rem;
-          .cart-selected {
-            width: .41rem;
-            height: 100%;
-            line-height: .89rem;
-            text-align: center;
-            color: #cacacf;
-          }
-          dl {
-            @include flex();
-            @include flexbox();
-            dt {
-              img {
-                width: .64rem;
-                height: .64rem;
-              }
-            }
-            dd {
-              padding-left: .1rem;
-              @include flex();
-              font-size: .11rem;
-              .cart-name {
-                height: .27rem;
-                width: 100%;
-                line-height: .15rem;
-                @include ellipsis(null, 2);
-              }
-              .cart-info {
-                margin-top: .11rem;
-                color: #a8a8a8;
-              }
-              .cart-price {
-                color: #f30000;
-              }
-            }
-          }
-          .cart-touch-delete {
-            width: .6rem;
-            height: 100%;
-            line-height: .89rem;
-            text-align: center;
-            color: #cacacf;
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
           }
         }
       }
@@ -214,10 +158,6 @@
           height: 100%;
           width: .81rem;
           text-align: center;
-<<<<<<< HEAD
-=======
-         
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
           color: #686868;
           @include justify-content(center);
           @include align-items(center);
@@ -232,22 +172,12 @@
         }
         .cart-total {
           @include flex();
-<<<<<<< HEAD
           p {
             color: #989898;
             span {
               color: #f30000;
             }
           }
-=======
-          p{
-              color: #989898;
-            span {
-                color: #f30000;
-              }
-          }
-          
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
         }
         .cart-pay {
           width: .8rem;
