@@ -6,10 +6,10 @@
     </header>
     <section>
       <ul class="cart-list">
-        <li class="cart-item" v-for="(item,index) in lists">
+        <li class="cart-item" v-for="(item,index) in cartitems">
           <div class="cart-shop">
             <i class="iconfont cart-circle" @click="cartSelect(item)" v-html="circle" :class="{ active: item.isActive }"></i>
-            <h4>上海好熊食品有限公司
+            <h4>{{item.shopName}}
               <i class="iconfont">&#xe6a3;</i>
             </h4>
             <span class="cart-edit">编辑</span>
@@ -18,21 +18,21 @@
             {
               content: '删除',
               style: { background: 'red', color: '#fff' },
-              handler: () => null
+              handler: () => cartDelete(index)
             }
           ]">
             <div class="cart-detail">
               <i class="cart-selected iconfont" @click="cartSelect(item)" v-html="circle" :class="{ active: item.isActive }"></i>
               <dl>
                 <dt>
-                  <img src="../../assets/images/melon.gif" alt="">
+                  <img :src="item.img" alt="">
                 </dt>
                 <dd>
-                  <p class="cart-name">天囍坊 爆款双人涤棉印花亲肤四件套2*2.3米被套包邮</p>
+                  <p class="cart-name">{{item.goodTitle}}</p>
                   <p class="cart-info">颜色: 白色 尺码: DX5</p>
                   <p class="cart-price">
-                    <span>¥1599.00</span>
-                    <span>1件</span>
+                    <span>¥{{item.price}}</span>
+                    <span>{{item.count}}件</span>
                     <i class="iconfont">&#xe80b;</i>
                   </p>
                 </dd>
@@ -76,11 +76,12 @@ import {getCartInfo} from "vuex";
 export default {
   data() {
     return {
-      // isActive: false,
+      isActive: false,
       circle: "&#xe6d7",
-      lists: [{}, {}, {}],
       carts: {},
-      i: -1
+      i: -1,
+      cartitems:[],
+      isActiveAll:false
     };
   },
   methods: {
@@ -102,12 +103,26 @@ export default {
         } */
     },
     selectall(){
-      console.log(11111);
+      var cartSwitch = true;
+      this.cartitems.forEach(function(item) {
+        console.log(item.isActive);
+        if(!item.isActive){
+          cartSwitch = false;
+        }
+      }, this);
+      if(!cartSwitch){
+				this.isSelectAll = false;
+			} else {
+				this.isSelectAll = true;
+			}
+    },
+    cartDelete(index){
+      console.log(index);
+      this.cartitems.splice(index, 1); 
     }
-
   },
    mounted() {
-        console.log(this.$store.state.cartInfo) ;
+        this.cartitems = this.$store.state.cartInfo ;
   },
   components: {
     //			Position : position
