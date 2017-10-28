@@ -52,8 +52,7 @@ module.exports = {
       },
 
       '/icon': {
-//      target: 'http://10.9.164.56/',
-        target: 'http://127.23.207.1/',
+     target: 'http://10.9.164.70/',
         changeOrigin: true,
         pathRewrite: {
           '^/icon': ''

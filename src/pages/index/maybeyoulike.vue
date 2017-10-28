@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </router-link>
-                         <!--</li>-->              
+                        <!-- </li>              -->
                     </ul>
 
                     <div slot="bottom" class="mint-loadmore-bottom">

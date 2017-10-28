@@ -2,7 +2,7 @@
   "name": "ule",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "1013659803 <1013659803@qq.com>",
+  "author": "ule-team",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

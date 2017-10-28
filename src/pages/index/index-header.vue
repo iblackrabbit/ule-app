@@ -14,17 +14,11 @@
             <i class="yo-ico">&#xe689;</i>
             <span>扫一扫</span>
         </div>
-     </div>
+    </div>
 </template>
 
 <script>
-export default{
-	data(){
-		return{
-			
-		}
-	}
-}
+
 
 </script>
 
