@@ -3,21 +3,6 @@
 		<ul class="footer-info">
 			<li>
 				<i class="iconfont">&#xe73f;</i>
-<<<<<<< HEAD
-				<span>客服</span>
-			</li>
-			<li>
-				<i class="iconfont">&#xe669;</i>
-				<span>收藏</span>
-			</li>
-			<li>
-				<i class="iconfont">&#xe6af;</i>
-				<span>购物车</span>
-			</li>
-		</ul>
-		<span class="addCart">加入购物车</span>
-		<span class="gotoBuy">立即购买</span>
-=======
 				<span :title="id">客服</span>
 			</li>
 			<li @click="changeText()" :class="{likeactive:isActive}">
@@ -69,24 +54,10 @@
 				<p class="sure" @click="sendToCart()">确定</p>
 			</div>
 		</mt-popup>
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 	</div>
 </template>
 
 <script>
-<<<<<<< HEAD
-	export default{
-		data : function(){
-			return {
-//				msg : 'aa'
-			}
-		},
-		methods : {  //单击事件等
-			
-		},
-		components : {
-//			Position : position
-=======
 	import Vue from 'vue';
 	import { Popup } from 'mint-ui';
 
@@ -182,7 +153,6 @@
 		},
 		updated(){
 			this.dataList = this.id;
->>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 		}
 	}
 </script>
