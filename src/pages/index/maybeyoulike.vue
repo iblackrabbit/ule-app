@@ -11,8 +11,8 @@
                               @translate-change="translateChange" 
                               @bottom-status-change="handleBottomChange" ref="loadmore">
                     <ul>
-                        <!-- <li v-for="list in likelist" v-on:click="sendMsg(list)" > -->
-                        <router-link to="/detail/1" v-for="list in likelist" v-on:click="sendMsg(list)" tag="li">
+                         <!--<li v-for="list in likelist" v-on:click="sendMsg(list.listingId)" >-->   
+                        <router-link :to="'/detail/'+list.listingId" v-for="list in likelist" v-on:click="sendMsg(list.listingId)" tag="li" :key="1">
                             <div class="youlike_content" >
                                 <a href="javascript:;"><img :src="list.imgUrl" alt=""></a>
                                 <p>{{list.listingName}}</p>
@@ -77,9 +77,9 @@ export default{
             this.moveTranslate = (1 + translateNum / 70).toFixed(2);
         },
         sendMsg(num){
-            Bus.$emit("listID", num.listingId);        
-        }
-       
+//      	this.$router.push({name:'detail',query : {id : num}});
+//          Bus.$emit("listID", num.listingId);        
+        }       
     },
     mounted() {
         axios.get('/mainhtml/mobilead/recommond/indexListingCommentGet',{

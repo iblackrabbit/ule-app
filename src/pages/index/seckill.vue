@@ -13,7 +13,7 @@
                 <span class="seckill-time-separator">:</span>
                 <div class="seckill-time"><span>{{seconds}}</span></div>
              </div>
-             <strong>周三 9点开抢</strong>
+             <strong>周四 9点开抢</strong>
         </div>
         <div class="sec_content">
             <div class="sec_left">
@@ -71,7 +71,7 @@ export default{
     },
     methods:{
         timecount(){          
-           var leftTime = new Date(2017,9,30,9,0,0) - new Date();
+           var leftTime = new Date(2017,9,26,9,0,0) - new Date();
             this.days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数 
             this.hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时 
             this.minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟 

@@ -1,47 +1,50 @@
 <template>
-	<div class="det-recommend">
+	<div class="det-recommend" ref="selfshop">
 		<p class="self-recom">本店推荐</p>
 		<div class="det-warp">
 			<div class="det-recom">
-				<a href="javascript:;" v-for="value in simiData">
+				<router-link :to="'/detail/'+value.listId" @click.native="detReturnTop()" v-for="value in simiData">
+				<!--<a href="javascript:;" >-->
 					<dl>
 						<dt><img :src="value.imgUrl"/></dt>
 						<dd class="goods-det">{{value.listName}}</dd>
-						<dd class="min-price">¥{{value.salePrice}}{{listid}}</dd>
+						<dd class="min-price">¥{{value.salePrice}}</dd>
 					</dl>
-				</a>
+				<!--</a>-->
+				</router-link>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	// import axiosUtil from '@/utils/axios.utiles.js';
 	import Bus from "@/components/Bus.js";
 	import axios from 'axios';
 	export default {
 		props : ["id"],
-		data : function(){
+		data : function(){			
 			return{
-				listid : 0,
 				simiData : {}
 			}
 		},
 		methods : {
 			ja(res){
 				this.simiData = res.listInfo.listInfos;
+			},
+			detReturnTop(){
+				this.$refs.selfshop.parentNode.parentNode.parentNode.scrollTop = 0;
+				history.pushState(window.location.hash,null,window.location.hash)
 			}
 		},
-		mounted(){
-			var that = this;
-			Bus.$on('storeId',function(msg){
-				that.listid = msg;
+		watch: {
+			id: function() {
+				var that = this;
 				axios({
 					url : '/item/searchItems.do',
 					method : 'get',
 					params : {
 						jsonApiCallback : "ja",
-						storeId : that.listid,
+						storeId : that.id,
 						sort : "2",
 						start : "1",
 						end : "6",
@@ -52,10 +55,7 @@
 				}).then((res)=>{
 					eval("that." + res.data);
 				})
-			});
-		},
-		updated(){
-			
+			}
 		}
 	}
 </script>

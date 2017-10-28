@@ -42,13 +42,17 @@ module.exports = {
         target: 'http://m.ule.com/',
         changeOrigin: true
       },
+      '/cat': {
+        target: 'http://m.ule.com/',
+        changeOrigin: true
+      },
       '/api': {
         target: 'http://service.ule.com',
         changeOrigin: true
       },
 
       '/icon': {
-        target: 'http://10.9.164.56/',
+     target: 'http://10.9.164.70/',
         changeOrigin: true,
         pathRewrite: {
           '^/icon': ''

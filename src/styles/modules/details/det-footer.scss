@@ -20,6 +20,9 @@
             border-left:1px solid #999;
             height:.3rem;
             margin-top:.1rem;
+            &.likeactive{
+                color:$base-color;
+            }
             i{
                 line-height: .14rem;
                 font-size: .22rem;
@@ -27,6 +30,7 @@
             span{
                 font-size: .1rem;
                 line-height: .28rem;
+                color:#666666;
             }
             &:nth-child(1) i{
                 color: $base-color;
@@ -44,6 +48,109 @@
         }
         &.gotoBuy{
             background: #e1262b;
+        }
+    }
+    .det-addto-cart{
+        width:3.75rem;
+        &>div{
+            height:.8rem;
+            padding:0 .15rem;
+            background:#fff;
+            @include border(0 0 1px 0,#e0e0e0);
+        }
+        .top{
+            position: relative;
+            @include flexbox();
+            @include flex-direction();
+            .pic{
+                position:absolute;
+                top:-.3rem;
+                left:.1rem;
+                @include border(1px,#000,solid,5px);
+                width:.9rem;
+                height:.9rem;
+                img{
+                    width:.9rem;
+                    @include border-radius(5px);
+                }
+            }
+            .right{
+                @include flex();
+                margin-left:.24rem;
+                padding-top:.1rem;
+                p{
+                    height:.23rem;
+                    line-height:.23rem;
+                    &.price{
+                        color:$base-color;
+                    }
+                }
+            }
+        }
+        .color,
+        .scale{
+            padding-top:.05rem;
+            height:auto !important;
+            p{
+                line-height:.35rem;
+                height:.35rem;
+                color:#666;
+            }
+            span{
+                display: inline-block;
+                margin-bottom:.1rem;
+                padding:0 .15rem;
+                height:.3rem;
+                line-height:.33rem;
+                margin-right:.03rem;
+                @include border(1px,#000,solid,5px);
+                &.cartactive{
+                    color:$base-color;
+                    @include border(1px,$base-color,solid,5px);
+                }
+            }
+        }
+        .count{
+            @include clearfix();
+            padding-top:.05rem;
+            line-height:.35rem;
+            color:#666;
+            .add-count{
+                height:.35rem;
+                float:right;
+                width:1rem;
+                float:right;
+                @include border(1px,#000,solid,5px);
+                @include flexbox();
+                @include flex-direction();
+                span{
+                    width:.30rem;
+                    height:.35rem;
+                    display:inline-block;
+                    line-height:.35rem;
+                    text-align:center;
+                    &:nth-child(1){
+                        @include border(0 1px 0 0,#000);
+                    }
+                    &:nth-child(3){
+                        @include border(0 0 0 1px,#000);
+                    }
+                }
+                input{
+                   @include flex(); 
+                   text-align:center;
+                   border:0;
+                }
+            }
+        }
+        .sure{
+            width:100%;
+            background:#fe0000;
+            height:.5rem;
+            color:#fff;
+            text-align:center;
+            line-height:.5rem;
+            font-size:.17rem;
         }
     }
 }

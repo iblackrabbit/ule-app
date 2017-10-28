@@ -9,7 +9,11 @@ import dynamic from '../pages/dynamic/dynamic.vue'
 import userself from '../pages/userself/myUle.vue'
 import category from '../pages/category.vue'
 import detail from '../pages/details/det-headerEntry.vue'
-
+import shop from '../pages/details/shop.vue'
+//search
+import search from '../pages/search/input.vue'
+import searchlist from '../pages/search/searchList.vue'
+//login
 import login from '../pages/login/login.vue'
 
 Vue.use(Router);
@@ -49,11 +53,30 @@ export default new Router({
       path: '/detail/:id',
       component: detail,
       name: 'detail'
+    }
+    ,
+    {
+    	path: '/search',
+    	component:search,
+    	name: 'search'
+    }
+    ,
+    {
+    	path: '/searchlist/:val',
+    	component:searchlist,
+    	name:'searchlist'
+    }
+    ,
+    {
+    	path: '/shop/:store',
+    	component:shop,
+    	name:'shop'
     },
     {
       path: '/login',
       component: login,
       name: 'login'
+
     }
   ]
 })
