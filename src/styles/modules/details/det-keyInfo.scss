@@ -128,6 +128,15 @@
                         }
                     }
                 }
+<<<<<<< HEAD
+=======
+                p.det-text{
+                    width:100%;
+                    height:.3rem;
+                    line-height:.3rem;
+                    @include ellipsis();
+                }
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
             }
         }
     }
@@ -144,4 +153,14 @@
             }
         }
     }
+<<<<<<< HEAD
+=======
+    .details-img{
+        width:100%;
+        iframe{
+            width:100%;
+            min-height:3000px !important;
+        }
+    }
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 }

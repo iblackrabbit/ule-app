@@ -24,4 +24,9 @@
   </div>
 </template>
 <script>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 </script>

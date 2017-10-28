@@ -54,16 +54,31 @@
 		</div>
 		
 		<!--店铺信息  组件-->
+<<<<<<< HEAD
 		<goto-shop></goto-shop>
 		
 		<!--本店商品推荐-->
 		<recommend :id="recomData"></recommend>
+=======
+		<goto-shop :id="dataList"></goto-shop>
+		
+		<!--本店商品推荐-->
+		<recommend :id="dataList.storeId"></recommend>
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 		
 		<!--拖拽查看详情-->
 		<div class="det-drag">
 			<p>拖动查看图文详情</p>
 			<p>......<span>{{id}}</span></p>
 		</div>
+<<<<<<< HEAD
+=======
+		
+		<!--详情页-->
+		<div class="details-img" ref="detImgHeight">
+			<iframe id="iframeimg" ref="iframe" frameborder=0 :src="dataList.listDescUrl"></iframe>
+		</div>
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 	</div>
 </template>
 
@@ -91,13 +106,34 @@
 				payment : [],
 				evaluateData : {},
 				evaluaLength : 1,
+<<<<<<< HEAD
 				recomData : {}
+=======
+				recomData : {},
+				scrollTop : 0
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 			}
 		},
 		methods : { 
 			//计算评价星星个数
 			iconNum(leng){
 				return Number(leng);
+<<<<<<< HEAD
+=======
+			},
+			changeEvaluateData(){
+				var that = this;
+				axiosUtil(this,'/api/mobile/commentQuery.do',{
+					jsonApiCallback : "j",
+					productId : that.listId,
+					start : "1",
+					end : "2",
+					appkey : "c8574b95e0544ae7",
+					version_no : "apr_2010_build01",
+					_ : "1505954135364"
+					
+				},'evaluateData');
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 			}
 		},
 		components : {
@@ -134,6 +170,7 @@
 						this.payment.push(this.payments[this.items[i]]);
 					}
 				}
+<<<<<<< HEAD
 			}
 		},
 		mounted(){
@@ -148,11 +185,39 @@
 				_ : "1505954135364"
 				
 			},'evaluateData');
+=======
+			},
+			//格式化iframe图片宽高
+			calcSize(){
+//				console.log(this.$refs.iframe.contentWindow.window.document.body.children)
+			}
+		},
+		watch : {
+			'$route' : function(){
+				this.listId = this.$route.params.id;
+				this.changeEvaluateData();
+			},
+			'scrollTop' : function(){
+				this.$store.commit({
+					type :'changeVal',
+					heightValue : this.scrollTop
+				})
+			}
+		},
+		mounted(){
+			this.changeEvaluateData();
+//			this.showIframe('iframeimg');
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 		},
 		updated(){
 			this.dataList = this.id;
 			this.dataList.itemInfo && (this.itemInfo = this.dataList.itemInfo[0]);
+<<<<<<< HEAD
 
+=======
+			this.scrollTop = this.$refs.detImgHeight.offsetTop;
+			this.calcSize;
+>>>>>>> 390559ac863b364701662ba5091b9230e8670aed
 		}
 	}
 </script>
