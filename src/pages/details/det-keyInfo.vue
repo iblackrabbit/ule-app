@@ -54,7 +54,7 @@
 		</div>
 		
 		<!--店铺信息  组件-->
-		<goto-shop :id="dataList.merchantName"></goto-shop>
+		<goto-shop :id="dataList"></goto-shop>
 		
 		<!--本店商品推荐-->
 		<recommend :id="dataList.storeId"></recommend>
@@ -67,7 +67,7 @@
 		
 		<!--详情页-->
 		<div class="details-img" ref="detImgHeight">
-			<iframe id="iframeimg" frameborder=0 :src="dataList.listDescUrl"></iframe>
+			<iframe id="iframeimg" ref="iframe" frameborder=0 :src="dataList.listDescUrl"></iframe>
 		</div>
 	</div>
 </template>
@@ -117,24 +117,6 @@
 					_ : "1505954135364"
 					
 				},'evaluateData');
-			},
-			showIframe(id){
-				var Iframe = document.getElementById(id);
-				console.log(document.body.scrollTop)
-				document.body.scrollTop = 500;
-				console.log('change' + document.body.scrollTop)
-				try {
-					// 声明变量取值
-					var bHeight = Iframe.contentWindow.document.body.scrollHeight;
-					var dHeight = Iframe.contentWindow.document.documentElement.scrollHeight;
-					var height = Math.max(bHeight, dHeight); // 取最大值
-					console.log(bHeight,dHeight,height);
-					Iframe.height = height;
-				} catch (ex) { }
-//				window.setInterval("setiframe('right_iframe')", 10);   //0.01秒周期调用函数
-			},
-			calcScrollTop(){
-//				console.log(this.$refs.detImgHeight.offsetTop);
 			}
 		},
 		components : {
@@ -171,6 +153,10 @@
 						this.payment.push(this.payments[this.items[i]]);
 					}
 				}
+			},
+			//格式化iframe图片宽高
+			calcSize(){
+//				console.log(this.$refs.iframe.contentWindow.window.document.body.children)
 			}
 		},
 		watch : {
@@ -183,7 +169,6 @@
 					type :'changeVal',
 					heightValue : this.scrollTop
 				})
-				console.log(this.scrollTop);
 			}
 		},
 		mounted(){
@@ -193,7 +178,8 @@
 		updated(){
 			this.dataList = this.id;
 			this.dataList.itemInfo && (this.itemInfo = this.dataList.itemInfo[0]);
-//			this.scrollTop = this.$refs.detImgHeight.offsetTop;
+			this.scrollTop = this.$refs.detImgHeight.offsetTop;
+			this.calcSize;
 		}
 	}
 </script>
