@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="login_all">
         <h3 class="login_title">
-            <a href="javascript:history.go(-1);" class="back"></a>登录
+            <router-link<a href="javascript:history.go(-1);" ></a>登录
         </h3>
         <div class="login_content">               
             <div class="row">
@@ -18,28 +18,45 @@
             <div class="login_bar">
                 <span>登录</span>
             </div>
-            <div class="">
+            <div class="signin">
                 <span>手机快速注册</span>
                 <b>忘记密码？</b>
             </div>
         </div>
+
         <div class="union_login">
             <div class="title">
                 <h3>一键登录</h3>
+            </div>
+            <div class="union_pic">
+                <a href="javascript:;" class="qq_login">
+                    <img src="https://i0.ulecdn.com/ulewap/i/qq_icon.png"/>
+                    <span>QQ</span>
+                </a>   
+                <a href="" class="sina_login">
+                    <img src="https://i0.ulecdn.com/ulewap/i/sina_icon.png"/>
+                    <span>新浪微博</span>
+                </a>                    
             </div>                
-            <a href="javascript:;" class="qq_login">
-                <img src="https://i0.ulecdn.com/ulewap/i/qq_icon.png"/>
-                <span>QQ</span>
-            </a>   
-            <a href="" class="sina_login">
-                <img src="https://i0.ulecdn.com/ulewap/i/sina_icon.png"/>
-                <span>新浪微博</span>
-            </a>                    
         </div>             
     </div>
 </template>
 
 <script>
 
+export default{
+    data(){
+        return {
+          
+        }
+    },
+    methods:{
+     
+    },
+    computed:{
+
+    }
+}
 
 </script>
+
