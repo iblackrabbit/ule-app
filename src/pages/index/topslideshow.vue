@@ -3,22 +3,22 @@
         <mt-swipe :auto="4000">
             <mt-swipe-item>
                 <div class="slideshow_1">
-                    <img src="../../assets/images/topslide_1.jpg">
+                    <img src="../../assets/images/topslide_1.jpg"/>
                 </div>
             </mt-swipe-item>
             <mt-swipe-item>
                 <div class="slideshow_2">
-                    <img src="../../assets/images/topslide_2.jpg">
+                    <img src="../../assets/images/topslide_2.jpg"/>
                 </div>
             </mt-swipe-item>
             <mt-swipe-item>
                 <div class="slideshow_3">
-                    <img src="../../assets/images/topslide_3.jpg">
+                    <img src="../../assets/images/topslide_3.jpg"/>
                 </div>
             </mt-swipe-item>
              <mt-swipe-item>
                 <div class="slideshow_4">
-                    <img src="../../assets/images/topslide_4.jpg">
+                    <img src="../../assets/images/topslide_4.jpg"/>
                 </div>
             </mt-swipe-item>
         </mt-swipe>

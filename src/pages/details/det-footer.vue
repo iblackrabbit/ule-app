@@ -107,6 +107,7 @@
 				this.popupVisible = !this.popupVisible;
 				/*收集购物车显示数据 */
 				this.sendData = {
+					id:this.dataList.listId,
 					shopName : this.dataList.storeName,
 					img : this.showImg,
 					color : this.nowGood.colorName || "",

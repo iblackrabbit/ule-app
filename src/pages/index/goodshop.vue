@@ -7,17 +7,35 @@
             </p>
         </div>
         <div class="goodshop_list">
-            <ul>
-                <li>
-                    <!-- <img src="http://localhost:4000/media/images/goodshop_1.jpg"/>                    -->
-                </li>
-            </ul>
-        </div>
+            <div class="goodshoplist_pic">
+                <mt-swipe :auto="5000">
+                    <mt-swipe-item>
+                        <div class="slideshow_1">
+                            <img src="../../assets/images/goodshop_1.jpg"/>
+                        </div>
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <div class="slideshow_2">
+                            <img src="../../assets/images/goodshop_2.png"/>
+                        </div>
+                    </mt-swipe-item>
+                    <mt-swipe-item>
+                        <div class="slideshow_3">
+                            <img src="../../assets/images/goodshop_3.png"/>
+                        </div>
+                    </mt-swipe-item>
+                </mt-swipe>
+            </div>   
+        </div>       
     </div>
 </template>
 
 <script>
+import Vue from "vue";
+import { Swipe, SwipeItem } from "mint-ui";
 
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 </script>
 
