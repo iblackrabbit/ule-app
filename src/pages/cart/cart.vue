@@ -47,7 +47,7 @@
       <div class="footer">
         <ul>
           <li class="cart-selectall">
-            <div class="checkall">
+            <div class="checkall" @click="selectall">
               <i class="iconfont">&#xe645;</i>
               <span>全选</span>
             </div>
@@ -69,46 +69,51 @@
   </div>
 </template>
 <script>
-  import {
-    CellSwipe
-  } from "mint-ui";
-  import Vue from 'vue';
-  Vue.component(CellSwipe.name, CellSwipe);
-  export default {
-    data() {
-      return {
-        // isActive: false,
-        circle: "&#xe6d7",
-        lists: [{},{},{}],
-        i: -1
+import { CellSwipe } from "mint-ui";
+import Vue from "vue";
+Vue.component(CellSwipe.name, CellSwipe);
+import {getCartInfo} from "vuex";
+export default {
+  data() {
+    return {
+      // isActive: false,
+      circle: "&#xe6d7",
+      lists: [{}, {}, {}],
+      carts: {},
+      i: -1
+    };
+  },
+  methods: {
+    //单击事件等
+    cartSelect(item, index) {
+      if (item.isActive == void 0) {
+        this.$set(item, "isActive", true);
+        this.circle = "&#xe656";
+      } else {
+        item.isActive = !item.isActive;
+        // this.circle = "&#xe6d7";
       }
-    },
-    methods: { //单击事件等
-      cartSelect(item,index) {
-        if (item.isActive == void 0) {
-          this.$set(item, "isActive", true)
-          this.circle = "&#xe656";
-        } else {
-          item.isActive = !item.isActive;
-          // this.circle = "&#xe6d7";
-        }
-       /*  if (index == this.isActive) {
+      /*  if (index == this.isActive) {
           this.circle = "&#xe656";
           this.isActive = true;
         } else {
           this.circle = "&#xe6d7";
           this.isActive = false;
         } */
-      }
     },
-    components: {
-      //			Position : position
+    selectall(){
+      console.log(11111);
     }
 
+  },
+   mounted() {
+        console.log(this.$store.state.cartInfo) ;
+  },
+  components: {
+    //			Position : position
   }
-
+};
 </script>
 <style lang="scss" scoped>
-
 
 </style>
