@@ -11,15 +11,17 @@
             <div class="farmprd_content">       
                 <div class="prd_list">
                     <div class="prd_list_left">
-                        <a href=""><img src="//pic3.ulecdn.com/item/user_0102/desc20171020/8d97966b841d5a96_-1x-1.jpg"/></a>
+                        <router-link tag="a" to="/detail/824941">
+                            <img src="//pic3.ulecdn.com/item/user_0102/desc20171020/8d97966b841d5a96_-1x-1.jpg"/>
+                        </router-link>
                     </div>
                     <div class="prd_list_right">
                         <div class="prd_list_top">
-                            <a href=""><img src="//pic4.ulecdn.com/item/user_0102/desc20171020/3be04d49e49fbf89_-1x-1.jpg"/></a>
+                            <router-link tag="a" to="/detail/2719672"><img src="//pic4.ulecdn.com/item/user_0102/desc20171020/3be04d49e49fbf89_-1x-1.jpg"/></router-link>
                         </div>
                         <div class="prd_list_bottom">
-                            <a href=""><img src="//pic2.ulecdn.com/item/user_0102/desc20171020/c81a4fe3a59ddfdb_-1x-1.jpg"/></a>
-                            <a href=""><img src="//pic4.ulecdn.com/item/user_0102/desc20171020/d0a27763edb9511e_-1x-1.jpg"/></a>
+                            <router-link tag="a" to="/detail/2650893"><img src="//pic2.ulecdn.com/item/user_0102/desc20171020/c81a4fe3a59ddfdb_-1x-1.jpg"/></router-link>
+                            <router-link tag="a" to="/detail/3009685"><img src="//pic4.ulecdn.com/item/user_0102/desc20171020/d0a27763edb9511e_-1x-1.jpg"/></router-link>
                         </div>
                     </div>
                 </div>

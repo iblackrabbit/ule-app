@@ -59,6 +59,8 @@
                     @include align-items(center);
                     width:100%;
                     height:.95rem;
+                    background: url("//i0.ulecdn.com/ulewap/i/290x290x2x.png") no-repeat;
+                    background-size:cover; 
                     img{
                         width:1rem;
                     } 
@@ -93,6 +95,8 @@
              @include flexbox(); 
              li{
                  @include flex();
+                 background: url("//i0.ulecdn.com/ulewap/i/290x290x2x.png") no-repeat;
+                 background-size:cover; 
                  &:first-child{
                     @include border(0 1px 0 0); 
                  }

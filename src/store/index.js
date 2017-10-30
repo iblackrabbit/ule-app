@@ -8,7 +8,8 @@ import scrollTop from './modules/detScrolltop';
 
 const store = new Vuex.Store({
 	state : {
-		cartInfo : []
+		cartInfo : {},
+		usernameInfo : ""
 	},
 	modules : {
 		scrollTop
@@ -27,7 +28,10 @@ const store = new Vuex.Store({
 				this.state.cartInfo.push(cartIn);
 			}
 			console.log(this.state.cartInfo)
-		}
+		},
+		getUsername(state,{userName}){
+			this.state.usernameInfo = userName;
+  		}
 	}
 })
 

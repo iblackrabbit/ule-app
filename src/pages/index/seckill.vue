@@ -13,14 +13,14 @@
                 <span class="seckill-time-separator">:</span>
                 <div class="seckill-time"><span>{{seconds}}</span></div>
              </div>
-             <strong>周四 9点开抢</strong>
+             <strong>周二 9点开抢</strong>
         </div>
         <div class="sec_content">
             <div class="sec_left">
                 <div class="sec_left_img">
-                    <a>
+                    <router-link to="/detail/3037462" tag="a">
                         <img src="//pic3.ulecdn.com/pic/user_0102/product/prd20170915/dab34dbf88001399_p800x800_290x290.jpg"/>
-                    </a>
+                    </router-link>
                 </div>  
                 <div class="sec_goods">
                     <p>
@@ -36,9 +36,9 @@
             </div>
              <div class="sec_left">
                 <div class="sec_left_img">
-                    <a>
+                    <router-link tag="a" to="/detail/3034116">
                         <img src="https://pic1.ule.com/m/pic/user_800114393/product/prd20170923/ef65d28898894cf9_p800x800_sl.jpg"/>
-                    </a>
+                    </router-link>
                 </div>  
                 <div class="sec_goods">
                     <p>
@@ -71,7 +71,7 @@ export default{
     },
     methods:{
         timecount(){          
-           var leftTime = new Date(2017,9,26,9,0,0) - new Date();
+           var leftTime = new Date(2017,9,31,9,0,0) - new Date();
             this.days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数 
             this.hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时 
             this.minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟 
