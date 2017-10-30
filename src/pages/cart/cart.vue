@@ -12,7 +12,7 @@
             <h4>{{item.shopName}}
               <i class="iconfont">&#xe6a3;</i>
             </h4>
-            <span class="cart-edit">编辑</span>
+            <span class="cart-edit" @click="hiddenItem(item)">编辑</span>
           </div>
           <mt-cell-swipe class="cart-cellswipe" :right="[
             {
@@ -28,13 +28,26 @@
                   <img :src="item.img" alt="">
                 </dt>
                 <dd>
+                <div class="cart-item-info" v-if="!item.show">
                   <p class="cart-name">{{item.goodTitle}}</p>
-                  <p class="cart-info">颜色: 白色 尺码: DX5</p>
+                  <p class="cart-info">颜色: {{item.color}} 规格: {{item.size}}</p>
                   <p class="cart-price">
                     <span>¥{{item.price}}</span>
                     <span>{{item.count}}件</span>
-                    <i class="iconfont">&#xe80b;</i>
                   </p>
+                </div>
+                  <div class="hidden-calc" v-else="item.show">
+                    <div class="add-count">
+                    <span @click="addCount(item)">-</span> 
+                    <input type="text" v-model="item.count"> 
+                    <span @click="addCount(item)">+</span>
+                  </div>
+                    <div class="cart-price-2">
+                      <span>¥{{item.price}}</span>
+                      <span>{{item.count}}件</span>
+                    </div>
+                  </div>
+                  
                 </dd>
               </dl>
               <div class="cart-touch-delete">
@@ -47,9 +60,9 @@
       <div class="footer">
         <ul>
           <li class="cart-selectall">
-            <div class="checkall" @click="selectall">
-              <i class="iconfont">&#xe645;</i>
-              <span>全选</span>
+            <div class="checkall" @click="selectall" :class="{colorchange:this.saActive}">
+              <i class="iconfont" :class="{colorchange_2:this.saActive}">&#xe645;</i>
+              <span :class="{colorchange_2:this.saActive}">全选</span>
             </div>
           </li>
           <li class="cart-total">
@@ -58,11 +71,10 @@
             </p>
             <p>
               总计：
-              <span class="money">¥0.00</span>
+              <span class="money">¥{{sumPrice}}</span>
             </p>
           </li>
           <li class="cart-pay">去付款</li>
-          <!-- <li class="cart-delete"></li> -->
         </ul>
       </div>
     </section>
@@ -72,16 +84,19 @@
 import { CellSwipe } from "mint-ui";
 import Vue from "vue";
 Vue.component(CellSwipe.name, CellSwipe);
-import {getCartInfo} from "vuex";
+import { getCartInfo } from "vuex";
 export default {
   data() {
     return {
       isActive: false,
-      circle: "&#xe6d7",
+      circle: "&#xe656;",
       carts: {},
       i: -1,
-      cartitems:[],
-      isActiveAll:false
+      cartitems: [],
+      isActiveAll: false,
+      sumPrice: 0,
+      saActive: false,
+      show: false
     };
   },
   methods: {
@@ -90,39 +105,70 @@ export default {
       if (item.isActive == void 0) {
         this.$set(item, "isActive", true);
         this.circle = "&#xe656";
+        this.calcSum();
       } else {
         item.isActive = !item.isActive;
-        // this.circle = "&#xe6d7";
+        this.calcSum();
       }
-      /*  if (index == this.isActive) {
-          this.circle = "&#xe656";
-          this.isActive = true;
-        } else {
-          this.circle = "&#xe6d7";
-          this.isActive = false;
-        } */
     },
-    selectall(){
-      var cartSwitch = true;
+    calcSum(state) {
+      this.sumPrice = 0;
       this.cartitems.forEach(function(item) {
-        console.log(item.isActive);
-        if(!item.isActive){
-          cartSwitch = false;
+        if (item.isActive) {
+          this.sumPrice += item.price * parseInt(item.count);
+        }
+        if (this.sumPrice == 0) {
+          this.sumPrice = "0.00";
         }
       }, this);
-      if(!cartSwitch){
-				this.isSelectAll = false;
-			} else {
-				this.isSelectAll = true;
-			}
     },
-    cartDelete(index){
-      console.log(index);
-      this.cartitems.splice(index, 1); 
-    }
+    selectall() {
+      if (!this.isActiveAll) {
+        this.cartitems.forEach(function(item) {
+          this.$set(item, "isActive", true);
+          this.isActiveAll = true;
+          this.calcSum();
+        }, this);
+        this.saActive = true;
+      } else {
+        this.cartitems.forEach(function(item) {
+          this.$set(item, "isActive", false);
+          this.isActiveAll = false;
+          this.calcSum(this.isActiveAll);
+        }, this);
+        this.saActive = false;
+      }
+    },
+    cartDelete(index) {
+      this.cartitems.splice(index, 1);
+      this.sumPrice = 0;
+    },
+    hiddenItem(item) {
+      console.log(item);
+      this.$set(item, "show", !item.show);
+      // this.show=!this.show;
+    },
+    addCount(item){
+      console.log(item.count);
+				this.count += item.count;
+				if(this.count < 1){
+					this.count = 1;
+				}
+			}
   },
-   mounted() {
-        this.cartitems = this.$store.state.cartInfo ;
+  mounted() {
+    this.cartitems = this.$store.state.cartInfo;
+    this.calcSum();
+  },
+  watch: {
+    /* "sumPrice":function(){
+      this.cartitems.forEach(function(item){
+        console.log(this.isActive);
+        if(item.isActive){
+          sumPrice += this.price*this.count;
+        }
+      }, this);
+    } */
   },
   components: {
     //			Position : position
