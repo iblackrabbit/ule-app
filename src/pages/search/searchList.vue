@@ -3,7 +3,7 @@
 		<!--{{this.$route.params.val}}-->
 		<div class="header">
 			<div class="top">
-				<i class="iconfont sear-back">&#xe679;</i>
+				<i class="iconfont sear-back" @click="returnBa">&#xe679;</i>
 				<div class="search-input">
 					<i class="iconfont" @click="sendData()">&#xe65c;</i>
 					<form action="">
@@ -26,7 +26,7 @@
 			<mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
 				<ul>
 					<router-link :to="'/detail/'+item.listingId" v-for="item in dataList" :key=1 tag="li">
-						<img :src="item.imgUrl"/>
+						<a href="javascript:;"><img :src="item.imgUrl"/></a>
 						<p class="title" v-html="item.listingName"></p>
 						<p class="free-send">包邮</p>
 						<p class="price">￥{{item.minPrice}}</p>
@@ -48,7 +48,7 @@
 	export default{
 		data(){
 			return {
-				valu : this.$route.params.val,
+				valu : this.$route.query.name,
 				dataList : [],
 				allLoaded :false,
 				autoFill : true,
@@ -60,32 +60,41 @@
 				overload : false
 			}
 		},
+		beforeCreate(){
+		},
 		mounted(){
 			this.requestData();
 		},
 		methods : {
+			returnBa(){
+				this.$router.go(-1);
+			},
 			requestData(){
 				var that = this;
-				axios({
-					url : '/cat/ajax.html',
-					method : "get",
-					params : {
-						sort : 1,
-						pageIndex : that.pageNum,
-						keyword : that.valu,
-						appkey : "4b9f40822ddd5cd5",
-						version_no : "apr_2010_build01"
-					}
-				}).then((res)=>{
-					that.dataload =true;
-					if(!res.data.resultList){
-						that.allLoaded = true;
-						that.overload = true;
-					}else{
-						that.dataList = that.dataList.concat(res.data.resultList);
-						that.pageNum++;
-					}
-				})
+				if(this.valu){
+					axios({
+						url : '/cat/ajax.html',
+						method : "get",
+						params : {
+							sort : 1,
+							pageIndex : that.pageNum,
+							keyword : that.valu,
+							appkey : "4b9f40822ddd5cd5",
+							version_no : "apr_2010_build01"
+						}
+					}).then((res)=>{
+						that.dataload =true;
+						if(!res.data.resultList){
+							that.allLoaded = true;
+							that.overload = true;
+						}else{
+							that.dataList = that.dataList.concat(res.data.resultList);
+							that.pageNum++;
+						}
+					})
+					//记录历史
+					this.$router.push('/searchlist')
+				}
 			},
 			sendData(){
 				var that = this;

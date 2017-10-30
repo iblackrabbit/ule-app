@@ -8,7 +8,8 @@ import scrollTop from './modules/detScrolltop';
 
 const store = new Vuex.Store({
 	state : {
-		cartInfo : {},
+		cartInfo : [],
+		cartNow : {},
 		usernameInfo : ""
 	},
 	modules : {
@@ -19,6 +20,7 @@ const store = new Vuex.Store({
 	},
 	mutations : {
 		getCartInfo(state,{cartIn}){
+			this.state.cartNow = cartIn;
 			var newArr = this.state.cartInfo.filter(function(value,index){
 				return value.id === cartIn.id;
 			});

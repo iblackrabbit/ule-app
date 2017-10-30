@@ -9,6 +9,8 @@ import dynamic from '../pages/dynamic/dynamic.vue'
 import userself from '../pages/userself/myUle.vue'
 import detail from '../pages/details/det-headerEntry.vue'
 import shop from '../pages/details/shop.vue';
+import buy from '../pages/details/sure-to-buy.vue';
+
 //search
 import search from '../pages/search/input.vue'
 import searchlist from '../pages/search/searchList.vue'
@@ -23,14 +25,12 @@ import category from '../pages/category/category.vue'
 Vue.use(Router);
 
 export default new Router({
-  linkActiveClass:"active",
-  routes: [
-    {
+  linkActiveClass: "active",
+  routes: [{
       path: '/',
       component: index,
       redirect: '/position',
-      children: [
-        {
+      children: [{
           path: '/position',
           component: position
         },
@@ -51,62 +51,62 @@ export default new Router({
           component: category
         }
       ]
-    }
-     ,
+    },
     {
       path: '/detail/:id',
       component: detail,
       name: 'detail'
-    }
-    ,
-    {
-    	path: '/search',
-    	component:search,
-    	name: 'search'
-    }
-    ,
-    {
-    	path: '/searchlist/:val',
-    	component:searchlist,
-    	name:'searchlist'
-    }
-    ,
-    {
-    	path: '/shop',
-    	component:shop,
-    	name:'shop'
     },
     {
-          	path:'/threebuy',
-          	component:threebuy
-          },
+      path: '/search',
+      component: search,
+      name: 'search'
+    },
+    {
+      path: '/searchlist',
+      component: searchlist,
+      name: 'searchlist'
+    },
+    {
+      path: '/shop',
+      component: shop,
+      name: 'shop'
+    },
+    {
+      path: '/threebuy',
+      component: threebuy
+    },
 
-  	{
-          	path:'/hotlist',
-          	component:hotlist
-          },
-   {
-          	path:'/hotlist2',
-          	component:hotlist2
-          },
-      {
-          	path:'/shopticket',
-          	component:shopticket
-          },
-           {
-          path: '/category',
-          component: category,
-//      children:[
-//        	{
-//        	path:'/threebuy',
-//        	component:threebuy
-//        	}
-//      ]
-       },
-       {
-       	path:'/myticket',
-       	component:myticket
-       }
+    {
+      path: '/hotlist',
+      component: hotlist
+    },
+    {
+      path: '/hotlist2',
+      component: hotlist2
+    },
+    {
+      path: '/shopticket',
+      component: shopticket
+    },
+    {
+      path: '/category',
+      component: category,
+      //      children:[
+      //        	{
+      //        	path:'/threebuy',
+      //        	component:threebuy
+      //        	}
+      //      ]
+    },
+    {
+      path: '/myticket',
+      component: myticket
+    },
+    {
+      path: '/buy',
+    	component:buy,
+    	name:'buy'
+    }
   ]
 })
-

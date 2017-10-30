@@ -11,12 +11,11 @@
 			</li>
 			<li>
 				<i class="iconfont">&#xe6af;</i>
-				<!--<span>购物车</span>-->
 				<router-link to="/cart" tag="span">购物车</router-link>
 			</li>
 		</ul>
 		<span class="addCart" @click="addToCart()">加入购物车</span>
-		<span class="gotoBuy">立即购买</span>
+		<span class="gotoBuy" @click="gotoBuy()">立即购买</span>
 		<mt-popup
 		  v-model="popupVisible"
 		  position="bottom">
@@ -35,7 +34,6 @@
 					<span v-for="(value,index) in dataList.colors" :class="{cartactive : index==qwe}" @click="judgeIndex(value,index)">
 						{{value.colorName}}
 					</span>
-					<!--<span class="cartactive">中干性</span>-->
 				</div>
 				<div class="scale">
 					<p>规格</p>
@@ -51,7 +49,8 @@
 						<span @click="addCount(1)">+</span>
 					</div>
 				</div>
-				<p class="sure" @click="sendToCart()">确定</p>
+				<p class="sure" v-if="type === 'cart'" @click="sendToCart()">确定</p>
+				<router-link to="/buy" tag="p" v-if="type === 'buy'" class="sure" @click="sendToCart()">确定</router-link>
 			</div>
 		</mt-popup>
 	</div>
@@ -79,7 +78,8 @@
 				showImg : "",
 				nowGood : {},
 				itemInfo : {},
-				price : 0
+				price : 0,
+				type : ""
 			}
 		},
 		methods : {  //单击事件等
@@ -94,17 +94,24 @@
 				}
 			},
 			addToCart(){
-				/*this.$store.commit({
+				/*console.log(this.$store.state.scrollTop.popup)
+				this.$store.commit({
 					type : 'changeState',
 					stateVal : true
 				});
-				this.popupVisible = this.$store.state.scrollTop.popup;
-				console.log(this.$store.state.scrollTop.popup)*/
-				this.popupVisible = !this.popupVisible;
+				this.popupVisible = this.$store.state.scrollTop.popup;*/
+				/*console.log(this.$store.state.scrollTop.popup)*/
+				this.popupVisible = true;
+				this.type = "cart";
+				
 //				this.popupVisible = this.$store.state.scrollTop.popup;
 			},
 			sendToCart(){
-				this.popupVisible = !this.popupVisible;
+				this.$store.commit({
+					type : 'changeState',
+					stateVal : false
+				});
+				this.popupVisible = this.$store.state.scrollTop.popup;
 				/*收集购物车显示数据 */
 				this.sendData = {
 					shopName : this.dataList.storeName,
@@ -120,6 +127,9 @@
 					type : "getCartInfo",
 					cartIn : this.sendData
 				})
+				if(this.type == "buy"){
+					console.log('buy');
+				}
 //				console.log(this.sendData);
 			},
 			addCount(val){
@@ -134,6 +144,10 @@
 				this.nowGood = value;
 				this.showImg = this.dataList.itemInfo[index].image[0].imgUrl;
 				this.price = this.itemInfo[index].salePrice;
+			},
+			gotoBuy(){
+				this.popupVisible = true;
+				this.type = "buy";
 			}
 		},
 		computed : {
@@ -147,7 +161,13 @@
 				this.showImg = this.itemInfo[0].image[0].imgUrl;
 				this.price = this.itemInfo[0].salePrice;
 				this.sizecart = this.dataList.colors[0].specifications[0].specificationName;
-			}
+			},
+			/*"popupVisible" : function(){
+				this.popupVisible = this.$store.state.scrollTop.popup;
+			},
+			"this.$store.state.scrollTop.popup" : function(){
+				console.log("changevar");
+			}*/
 		},
 		mounted (){
 //			this.popupVisible = this.$store.state.scrollTop.popup;
