@@ -7,14 +7,18 @@ import cart from '../pages/cart/cart.vue'
 import dynamic from '../pages/dynamic/dynamic.vue'
 // import mine from '../pages/mine.vue'
 import userself from '../pages/userself/myUle.vue'
-import category from '../pages/category.vue'
 import detail from '../pages/details/det-headerEntry.vue'
-import shop from '../pages/details/shop.vue'
+import shop from '../pages/details/shop.vue';
 //search
 import search from '../pages/search/input.vue'
 import searchlist from '../pages/search/searchList.vue'
-//login
-import login from '../pages/login/login.vue'
+//category
+import threebuy from '../pages/category/shoplist/threebuy'
+import hotlist from '../pages/category/shoplist/hot-list'
+import hotlist2 from '../pages/category/shoplist/hot-list2'
+import myticket from '../pages/userself/ticketCenter/myticket'
+import shopticket from '../pages/userself/ticketCenter/shopticket'
+import category from '../pages/category/category.vue'
 
 Vue.use(Router);
 
@@ -73,11 +77,36 @@ export default new Router({
     	name:'shop'
     },
     {
-      path: '/login',
-      component: login,
-      name: 'login'
+          	path:'/threebuy',
+          	component:threebuy
+          },
 
-    }
+  	{
+          	path:'/hotlist',
+          	component:hotlist
+          },
+   {
+          	path:'/hotlist2',
+          	component:hotlist2
+          },
+      {
+          	path:'/shopticket',
+          	component:shopticket
+          },
+           {
+          path: '/category',
+          component: category,
+//      children:[
+//        	{
+//        	path:'/threebuy',
+//        	component:threebuy
+//        	}
+//      ]
+       },
+       {
+       	path:'/myticket',
+       	component:myticket
+       }
   ]
 })
 

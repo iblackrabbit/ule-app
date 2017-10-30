@@ -36,7 +36,13 @@
 @import "./modules/userself/my-pocket.scss";
 @import "./modules/userself/icon-list.scss";
 @import "./modules/userself/myUle.scss";
+@import "./modules/userself/ticketCenter/shopticket.scss";
+@import "./modules/userself/ticketCenter/myticket.scss";
 
+//category
 
-//login
-@import "./modules/login/login.scss";
+@import "./modules/category/top-search-bar.scss";
+@import "./modules/category/classifical-details.scss";
+@import "./modules/category/shoplist/threebuy.scss";
+@import "./modules/category/shoplist/hot-list.scss";
+@import "./modules/category/shoplist/hot-list2.scss";

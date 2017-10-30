@@ -64,7 +64,28 @@ module.exports = {
         pathRewrite: {
           '^/vip': ''
         }
-      }
+      },
+        '/search':{
+	    	target:'https://search.ule.com/',
+	    	changeOrigin: true,
+	    	pathRewrite:{
+	    		'^/search': ''
+	    	}
+    	},
+    	'/service':{
+	    	target:'https://service.ule.com/',
+	    	changeOrigin: true,
+	    	pathRewrite:{
+	    		'^/service': ''
+	    	}
+    	},
+    	'/ticket':{
+	    		target:'http://mypurse.ule.com/',
+	    		changeOrigin:true,
+	    		pathRewrite:{
+	    			'^/ticket':''
+	    		}
+	    }	
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
