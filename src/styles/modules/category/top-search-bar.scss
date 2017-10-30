@@ -1,0 +1,37 @@
+.top-search-bar{
+    height: .4rem;
+    background: #fff;
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+      position:relative;
+         a{
+            .back{
+                  content:'';
+                 border-top:.02rem solid #333333;
+                 border-left:.02rem solid #333333;
+                 position: absolute;
+                height:.15rem;
+                width:.15rem;
+                left:.15rem;
+                top:.12rem;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+        }
+    .searchbox{
+        padding:0 .3rem;
+        @include flex();
+      
+           
+        input{
+            height: .3rem;
+            line-height: .3rem;
+            width: 100%;
+            @include border-radius(.3rem);
+            text-align: center;
+            border:none;
+            background: #f5f4f9;
+        }
+    }
+}

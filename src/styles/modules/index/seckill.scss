@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+.sec_all{
+    width:100%;
+    height: 1.65rem;
+    @include flexbox();
+    @include flex-direction(column);
+    background: #fff;
+    .sec_top{
+        width:100%;
+        height:.4rem;
+        @include border(0 0 1px 0);
+        @include flexbox();
+        p{
+            width:1rem;
+            height:100%;
+            @include flex(2);
+            color:#FF7901;
+            font-size:.15rem;
+            padding-left:.05rem;
+            @include flexbox();
+            i{
+              font-size: .2rem;  
+              line-height: .4rem;  
+            }
+            b{
+              padding-left:.03rem;  
+              line-height: .4rem;   
+            }
+        }
+        span{
+            @include flex();
+            width:.5rem;
+            height: 100%;
+            font-size: .14rem;
+            line-height: .4rem;
+        }
+        .seckill-timer{
+        
+            @include flexbox();
+            @include justify-content(center);
+            @include align-items(center);
+            text-align: center;
+            .seckill-time{
+                width:.2rem;
+                height: .2rem;
+                background: #000;               
+                @include border-radius(.05rem);
+                span{
+                    line-height:.2rem;
+                    color:#fff;
+                }
+            }
+            .seckill-time-separator{
+                display: inline-block;
+                width:12px;
+            }
+        }
+        strong{
+            @include flex(2);
+            font-size:.12rem;
+            line-height:.4rem;
+            font-weight: 100;
+            color:#6D6D6D;
+            padding-left:.08rem;
+        }
+    }
+    .sec_content{
+        width:100%!important;
+        height:100%;
+        @include flex();
+        @include flexbox();
+        .sec_left{
+            width:100%;
+            height:100%;
+            @include flex();
+            @include flexbox();
+            .sec_left_img{
+                @include flex();
+                @include flexbox();
+                @include justify-content(center);
+                @include align-items(center);
+                a{ 
+                    padding:.05rem;             
+                    img{
+                        width:100%;  
+                        height:100%;                  
+                    } 
+                }
+            }
+            .sec_goods{
+               @include flex();
+               @include flexbox();
+               @include flex-direction(column);
+              p{
+                  
+                width:.7rem;
+                height: .2rem;
+                margin-top:.16rem;
+                background: #FF4040;
+                @include border-radius(0 .1rem .1rem 0);
+                color:#fff;
+                i{
+                   display: inline-block; 
+                   height:100%; 
+                   padding-left:.05rem; 
+                   line-height: .2rem;
+                }
+                b{
+                    line-height: .2rem;
+                    font-size: .12rem;
+                }              
+              }
+               span{
+                    margin-top:.12rem;
+                    color:$base-color;
+                    strong{
+                        font-size: .12rem;
+                    }
+                    b{
+                         font-size: .20rem;
+                    }
+
+                }
+                em{
+                    margin-top:.1rem;
+                    font-weight: 100;
+                    font-size: .12rem;
+                    color: #70706F; 
+                }
+            }
+        }
+        .sec_right{
+            width:100%;
+            height:100%;
+            @include flex();
+        }
+    }
+}

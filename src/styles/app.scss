@@ -1,3 +1,48 @@
-@import "./yo/base.scss";
-@import "./yo/variables.scss";
-@import "./yo/reset.scss";
+@import "./yo/usage/core/reset";
+@import "./modules/common.scss";
+
+//cart
+@import "./modules/cart.scss";
+
+//dynamic
+@import "./modules/dynamic.scss";
+
+//index
+@import "./modules/index/index.scss";
+@import "./modules/index/farmprd.scss";
+@import "./modules/index/goodshop.scss";
+// @import "./modules/index/index-footer.scss";
+@import "./modules/index/index-header.scss";
+@import "./modules/index/index-nav.scss";
+@import "./modules/index/maybeyoulike.scss";
+@import "./modules/index/phonevip.scss";
+@import "./modules/index/seckill.scss";
+@import "./modules/index/topslideshow.scss";
+
+/*details*/
+@import './modules/details/det-footer.scss';
+@import './modules/details/det-headerEntry.scss';
+@import './modules/details/det-imgInfo.scss';
+@import './modules/details/det-keyInfo.scss';
+@import './modules/details/det-utils.scss';
+
+/*search*/
+@import './modules/search/search.scss';
+
+//userself
+
+@import "./modules/userself/toinfobar.scss";
+@import "./modules/userself/orderlist.scss";
+@import "./modules/userself/my-pocket.scss";
+@import "./modules/userself/icon-list.scss";
+@import "./modules/userself/myUle.scss";
+@import "./modules/userself/ticketCenter/shopticket.scss";
+@import "./modules/userself/ticketCenter/myticket.scss";
+
+//category
+
+@import "./modules/category/top-search-bar.scss";
+@import "./modules/category/classifical-details.scss";
+@import "./modules/category/shoplist/threebuy.scss";
+@import "./modules/category/shoplist/hot-list.scss";
+@import "./modules/category/shoplist/hot-list2.scss";

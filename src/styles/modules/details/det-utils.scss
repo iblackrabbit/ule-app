@@ -1,0 +1,170 @@
+ @charset "utf-8";
+
+/*goto-shop.vue 模块*/
+.det-gotoshop{
+    height:.8rem;
+    border-bottom : 1px solid #e1e1e1;
+    padding:0 .17rem;
+    background-color: #fff;
+    margin-top:.1rem;
+    @include flexbox();
+    @include flex-direction();
+    @include align-items();
+    .det-shop-img{
+        border:1px solid #e6e6e6;
+        line-height:.48rem;
+        width:.48rem;
+        height:.48rem;
+        overflow: hidden;
+        img{
+            width:.48rem;
+        }
+    }
+    .det-shop-mid{
+        @include flex();
+        @include flexbox();
+        @include flex-direction(column);
+        padding-left:.12rem;
+        height:.48rem;
+        .shop-level{
+            color:$base-color;
+            line-height:.16rem;
+        }
+        .shop-name{
+            font-size:.15rem;
+            line-height:.26rem;
+            .goto-shop{
+                float:right;
+                color: #fff;
+                background-color:$base-color;
+                text-align:center;
+                width:.6rem;
+                height:.3rem;
+                font-size:.12rem;
+                line-height:.3rem;
+                @include border-radius(5px);
+                display: inline-block;
+            }
+        }
+    }
+}
+
+/*店铺详情模块*/
+.shopdetails{
+    background:url('http://i3.ulecdn.com/ulewap/i/store_banner_bg.png');
+    .det-gotoshop{
+        background:none;
+        border-bottom:0;
+        .shop-name{
+            color:#fff;
+        }
+        .shop-level{
+            i{
+                color:#f7d728;
+            }
+        }
+    }
+    .score{
+        height:.3rem;
+        line-height:.25rem;
+        color:#fff;
+        @include flexbox();
+        @include flex-direction();
+        span{
+            text-align:center;
+            @include flex();
+        }
+    }
+}
+
+/*has-choice.vue 模块*/
+/*公共部分*/
+.det-common{
+    background-color:#fff;
+    height:.39rem;
+    @include flexbox();
+    @include flex-direction();
+    padding:0 .15rem 0 .11rem;
+    line-height:.39rem;
+    .det-common-text{
+        color:#747474;
+        margin-right:.17rem;
+        width:.27rem;
+        font-size:.13rem;
+    }
+    .det-dotted{
+        width:.18rem;
+    }
+    .det-common-cen{
+        @include flex();
+    }
+}
+/*私有部分*/
+.det-has-choice{
+    margin:.1rem 0;
+}
+
+/*send-to.vue 模块*/
+.det-sendto{
+    border-bottom:1px solid #e0e0e0;
+    .det-address {
+        position: relative;
+        i,
+        .det-stock{
+            color:$base-color;
+        }
+        .det-stock{
+            position:absolute;
+            top:.19rem;
+            left:.21rem;
+        }
+    }
+}
+
+/*det-recommend 模块*/
+.det-recommend{
+    background:#fff;
+    padding:0 .1rem;
+    margin-top:.1rem;
+    .self-recom{
+        height:.4rem;
+        line-height:.4rem;
+        font-size:.14rem;
+        font-weight:bold;
+    }
+    .det-warp{
+        width:100%;
+        overflow-x:scroll;
+        .det-recom{
+            width:6.9rem;
+            a{
+                display:inline-block;
+                dl{
+                    margin-right:.05rem;
+                    width:1.09rem;
+                    dt{
+                        border:1px solid #cdcdcd;
+                        overflow:hidden;
+                        margin-bottom:.09rem;
+                        img{
+                            width:1.09rem;
+                        }
+                    }
+                    dd.goods-det{
+                        height:.30rem;
+                        line-height:.16rem;
+                        overflow:hidden;
+                        font-size:.12rem;
+                        color:#5b5b5b;
+                    }
+                    dd.min-price{
+                        color:$base-color;
+                        font-size:.11rem;
+                        font-weight:bold;
+                        margin-top:.08rem;
+                    }
+                }
+            }
+        }
+    }
+}

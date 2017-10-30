@@ -1,0 +1,64 @@
+ .all-orders{
+     margin-bottom: .11rem;
+              height:.76rem;
+              background: #fff;
+              ul{
+                  height: 100%;
+                  width: 100%;
+                  @include flexbox();
+                  li{
+                     
+                      @include justify-content(center);
+                      @include align-items(center);
+                      @include flexbox();
+                      @include flex-direction(column);
+                      @include flex();
+                      text-align:center;
+                    &:first-child{
+                        width: .74rem;
+                        height: 100%;
+                        background:url("https://i0.ulecdn.com/ulewap/i/p_arrow_bg.png") no-repeat right;
+                       span{
+                           display: inline-block;
+                           width: .5rem;
+                           height: .4rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_orders.png")  no-repeat;
+                           background-position: center .07rem;
+                           background-size: .32rem 1.97rem;
+                       } 
+                    } 
+                    &:nth-child(2){
+                        span{
+                           display: inline-block;
+                           width: .5rem;
+                           height: .4rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_orders.png")  no-repeat;    
+                            background-position: center -.31rem;
+                                background-size: .3rem 1.94rem;
+                        }
+                    } 
+                    &:nth-child(3){
+                        span{
+                            display: inline-block;
+                           width: .5rem;
+                           height: .4rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_orders.png")  no-repeat;    
+                           background-position: center -.75rem;
+                                background-size: .32rem 2.06rem;
+                        }
+                    }
+                    &:last-child{
+                       span{
+                            display: inline-block;
+                           width: .5rem;
+                           height: .4rem;
+                           background:url("https://i0.ulecdn.com/ulewap/i/p_icon_orders.png")  no-repeat;    
+                         background-position: center -1.60rem;
+                                background-size: .35rem 2.13rem; 
+                       }
+                    }
+                        
+                       
+                  }
+              }
+          } 
