@@ -57,6 +57,8 @@
                     @include flex-direction(column);
                     a{
                         display: block;
+                        background: url("//i0.ulecdn.com/ulewap/i/290x290x2x.png") no-repeat;
+                        background-size:cover; 
                         width:100%!important;
                         @include flex();
                         img{
