@@ -38,9 +38,9 @@
                 </div>
                   <div class="hidden-calc" v-else="item.show">
                     <div class="add-count">
-                    <span @click="addCount(item)">-</span> 
+                    <span @click="addCount(item,-1)">-</span> 
                     <input type="text" v-model="item.count"> 
-                    <span @click="addCount(item)">+</span>
+                    <span @click="addCount(item,1)">+</span>
                   </div>
                     <div class="cart-price-2">
                       <span>¥{{item.price}}</span>
@@ -148,12 +148,9 @@ export default {
       this.$set(item, "show", !item.show);
       // this.show=!this.show;
     },
-    addCount(item){
-      console.log(item.count);
-				this.count += item.count;
-				if(this.count < 1){
-					this.count = 1;
-				}
+    addCount(item,val){
+        item.count += val;
+        this.calcSum();
 			}
   },
   mounted() {
