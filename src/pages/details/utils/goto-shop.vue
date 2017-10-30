@@ -5,9 +5,8 @@
 		</div>
 		<div class="det-shop-mid">
 			<p class="shop-name">
-				上海
-				<!--{{id.merchantName}}-->
-				<!--<router-link :to="'/shop/'+id.storeId" tag="span" class="goto-shop">进入店铺</router-link>-->
+				{{id.merchantName}}
+				<router-link :to="{path:'/shop',query:{storeid:id.storeId,storename:id.merchantName}}" tag="span" class="goto-shop">进入店铺</router-link>
 			</p>
 			<p class="shop-level"><i class="iconfont">&#xe64b;&#xe64b;&#xe64b;&#xe64b;&#xe64b;</i></p>
 		</div>

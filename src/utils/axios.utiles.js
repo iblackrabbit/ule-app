@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default function axiosUtil(obj,url,params,data){
+export default function axiosUtil(obj,url,params,data,fn){
 	obj.j = function(res){
 		obj[data] = res;
 	}
@@ -10,5 +10,6 @@ export default function axiosUtil(obj,url,params,data){
 		params : params
 	}).then((res)=>{
 		eval('obj.' + res.data);
+		fn && fn();
 	})	
 }

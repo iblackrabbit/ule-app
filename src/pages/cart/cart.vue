@@ -6,10 +6,10 @@
     </header>
     <section>
       <ul class="cart-list">
-        <li class="cart-item" v-for="(item,index) in lists">
+        <li class="cart-item" v-for="(item,index) in cartitems">
           <div class="cart-shop">
             <i class="iconfont cart-circle" @click="cartSelect(item)" v-html="circle" :class="{ active: item.isActive }"></i>
-            <h4>上海好熊食品有限公司
+            <h4>{{item.shopName}}
               <i class="iconfont">&#xe6a3;</i>
             </h4>
             <span class="cart-edit">编辑</span>
@@ -18,21 +18,21 @@
             {
               content: '删除',
               style: { background: 'red', color: '#fff' },
-              handler: () => null
+              handler: () => cartDelete(index)
             }
           ]">
             <div class="cart-detail">
               <i class="cart-selected iconfont" @click="cartSelect(item)" v-html="circle" :class="{ active: item.isActive }"></i>
               <dl>
                 <dt>
-                  <img src="../../assets/images/melon.gif" alt="">
+                  <img :src="item.img" alt="">
                 </dt>
                 <dd>
-                  <p class="cart-name">天囍坊 爆款双人涤棉印花亲肤四件套2*2.3米被套包邮</p>
+                  <p class="cart-name">{{item.goodTitle}}</p>
                   <p class="cart-info">颜色: 白色 尺码: DX5</p>
                   <p class="cart-price">
-                    <span>¥1599.00</span>
-                    <span>1件</span>
+                    <span>¥{{item.price}}</span>
+                    <span>{{item.count}}件</span>
                     <i class="iconfont">&#xe80b;</i>
                   </p>
                 </dd>
@@ -47,7 +47,7 @@
       <div class="footer">
         <ul>
           <li class="cart-selectall">
-            <div class="checkall">
+            <div class="checkall" @click="selectall">
               <i class="iconfont">&#xe645;</i>
               <span>全选</span>
             </div>
@@ -69,46 +69,66 @@
   </div>
 </template>
 <script>
-  import {
-    CellSwipe
-  } from "mint-ui";
-  import Vue from 'vue';
-  Vue.component(CellSwipe.name, CellSwipe);
-  export default {
-    data() {
-      return {
-        // isActive: false,
-        circle: "&#xe6d7",
-        lists: [{},{},{}],
-        i: -1
+import { CellSwipe } from "mint-ui";
+import Vue from "vue";
+Vue.component(CellSwipe.name, CellSwipe);
+import {getCartInfo} from "vuex";
+export default {
+  data() {
+    return {
+      isActive: false,
+      circle: "&#xe6d7",
+      carts: {},
+      i: -1,
+      cartitems:[],
+      isActiveAll:false
+    };
+  },
+  methods: {
+    //单击事件等
+    cartSelect(item, index) {
+      if (item.isActive == void 0) {
+        this.$set(item, "isActive", true);
+        this.circle = "&#xe656";
+      } else {
+        item.isActive = !item.isActive;
+        // this.circle = "&#xe6d7";
       }
-    },
-    methods: { //单击事件等
-      cartSelect(item,index) {
-        if (item.isActive == void 0) {
-          this.$set(item, "isActive", true)
-          this.circle = "&#xe656";
-        } else {
-          item.isActive = !item.isActive;
-          // this.circle = "&#xe6d7";
-        }
-       /*  if (index == this.isActive) {
+      /*  if (index == this.isActive) {
           this.circle = "&#xe656";
           this.isActive = true;
         } else {
           this.circle = "&#xe6d7";
           this.isActive = false;
         } */
-      }
     },
-    components: {
-      //			Position : position
+    selectall(){
+      var cartSwitch = true;
+      this.cartitems.forEach(function(item) {
+        console.log(item.isActive);
+        if(!item.isActive){
+          cartSwitch = false;
+        }
+      }, this);
+      if(!cartSwitch){
+				this.isSelectAll = false;
+			} else {
+				this.isSelectAll = true;
+			}
+    },
+    cartDelete(index){
+      console.log(index);
+      this.cartitems.splice(index, 1); 
     }
-
+  },
+   mounted() {
+        this.cartitems = this.$store.state.cartInfo ;
+  },
+  components: {
+    //			Position : position
   }
-
+};
 </script>
 <style lang="scss" scoped>
-
 
 </style>
