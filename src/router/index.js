@@ -10,6 +10,8 @@ import userself from '../pages/userself/myUle.vue'
 import category from '../pages/category.vue'
 import detail from '../pages/details/det-headerEntry.vue'
 import shop from '../pages/details/shop.vue';
+import buy from '../pages/details/sure-to-buy.vue';
+
 //search
 import search from '../pages/search/input.vue'
 import searchlist from '../pages/search/searchList.vue'
@@ -60,7 +62,7 @@ export default new Router({
     }
     ,
     {
-    	path: '/searchlist/:val',
+    	path: '/searchlist',
     	component:searchlist,
     	name:'searchlist'
     }
@@ -69,6 +71,11 @@ export default new Router({
     	path: '/shop',
     	component:shop,
     	name:'shop'
+    },
+    {
+    	path: '/buy',
+    	component:buy,
+    	name:'buy'
     }
   ]
 })
