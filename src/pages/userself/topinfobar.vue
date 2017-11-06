@@ -12,9 +12,9 @@
   </div>
   <div class="user-photo-setting">
 		<div class="photo-num">
-			<div class="user-photo">
+			<router-link tag='div' to='/login' class="user-photo">
 				<img src="https://my.ule.com/myid/images/default_default_48X48.gif">
-			</div>
+			</router-link>
 			<div class="user-phoneNumber">
 				{{username}}
 			</div>
@@ -30,6 +30,7 @@
 	export default{
 		data(){
 			return{
+				
 				username:'请登录'
 			}
 		},

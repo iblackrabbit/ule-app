@@ -21,6 +21,7 @@ import hotlist2 from '../pages/category/shoplist/hot-list2'
 import myticket from '../pages/userself/ticketCenter/myticket'
 import shopticket from '../pages/userself/ticketCenter/shopticket'
 import category from '../pages/category/category.vue'
+import login from '../pages/login/login.vue'
 
 Vue.use(Router);
 
@@ -51,6 +52,11 @@ export default new Router({
           component: category
         }
       ]
+    },
+    {
+      path: '/login',
+      component: login,
+      name: 'login'
     },
     {
       path: '/detail/:id',
@@ -92,12 +98,6 @@ export default new Router({
     {
       path: '/category',
       component: category,
-      //      children:[
-      //        	{
-      //        	path:'/threebuy',
-      //        	component:threebuy
-      //        	}
-      //      ]
     },
     {
       path: '/myticket',

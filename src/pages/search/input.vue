@@ -28,7 +28,7 @@
 		methods : {
 			//返回上级页面
 			returnIndex(){
-				this.$router.go(-2);
+				this.$router.go(-1);
 			},
 			toList(){
 				console.log(12344);
