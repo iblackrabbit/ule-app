@@ -1,5 +1,5 @@
 <template>
-	<div class="det-recommend">
+	<div class="det-recommend" ref="selfshop">
 		<p class="self-recom">本店推荐</p>
 		<div class="det-warp">
 			<div class="det-recom">
@@ -32,7 +32,8 @@
 				this.simiData = res.listInfo.listInfos;
 			},
 			detReturnTop(){
-//				console.log(this.$route.$refs.detSection);
+				this.$refs.selfshop.parentNode.parentNode.parentNode.scrollTop = 0;
+				history.pushState(window.location.hash,null,window.location.hash)
 			}
 		},
 		watch: {

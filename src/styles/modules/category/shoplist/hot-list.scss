@@ -1,0 +1,140 @@
+.hotlist{
+	
+	width:100%;
+	height:100%;
+	.topshow{
+		
+		a{
+            .back{
+                  content:'';
+                 border-top:.02rem solid #fff;
+                 border-left:.02rem solid #fff;
+                 position: absolute;
+                height:.15rem;
+                width:.15rem;
+                left:.15rem;
+                top:.12rem;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+        }
+		padding-left:.1rem;
+		color:#fff;
+		background:url(https://i3.ulecdn.com/ulewap/i/store_banner_bg.png) no-repeat;
+		width:100%;
+		height:1.5rem;
+		.searchbar{
+			padding:.04rem 0;
+			input{
+				margin-left:.30rem;
+				width:2.26rem;
+				height:.30rem;
+				@include border-radius(15px);
+				border:none;
+				font-size:.16rem;
+				line-heigth:.30rem;
+			}
+		}
+		.star{
+			padding:.15rem .15rem 0 0;
+			 @include flexbox();
+			.shopicon{
+			height:.4rem;
+			width:.4rem;
+			margin-right:.15rem;
+			}
+			.shopname{
+				width:2.2rem;
+				h4{
+					font-size:.14rem;
+					font-size: normal;
+				}
+				.starpic{
+					width:1rem;
+					height:.14rem;
+				}
+			}
+			.store{
+				width:.6rem;
+				height: .26rem;
+				background: #e32322;
+				@include border-radius(.05rem);
+				margin-left:0.4rem;
+				line-height: .26rem;
+				text-align: center;
+				font-size:.14rem;
+			}
+		}
+		.description{
+			padding:.2rem 0;
+			ul{
+				@include flexbox();
+				li{
+					font-size:.14rem; 
+					&:first-child{
+						padding-right:.4rem;
+					}
+					&:nth-child(2){
+						padding-right:.4rem;
+					}
+				}
+			}
+		}
+	
+	}
+		.shoplists{
+			width: 100%!important;
+			height: 5.17rem;
+			overflow-y: scroll;
+			ul{
+		
+				@include flexbox();
+				@include flex-wrap(wrap);
+				li{
+					&:nth-child(2n){
+						margin-top:.15rem;
+						margin-left:2%;
+						margin-right:2%;
+						width:46%;
+					}
+					&:nth-child(2n+1){
+						margin-top:.15rem;
+						margin-left:2%;
+						margin-right:2%;
+						width:46%;
+					}
+					img{
+						width:1.76rem;
+						height: 1.76rem;
+					}
+					.price{
+						height:.3rem;
+						line-height: .3rem;
+						background: #fff;
+						width:1.76rem;
+						padding:0 .05rem;
+						span{
+							font-size:.16rem;
+							&:first-child{
+							color:#f30000;
+							margin-right:.15rem;
+							}
+							&:last-child{
+								TEXT-DECORATION: line-through;
+								color:#a8a8a8;
+							}
+						}
+					}
+					.title{
+						height:.6rem;
+						line-height: .3rem;
+						width:1.76rem;
+						background: #fff;
+						@include ellipsis(null,2);
+						font-size: .16rem;
+						color:#a8a8a8;
+					}
+				}
+			}
+		}
+}

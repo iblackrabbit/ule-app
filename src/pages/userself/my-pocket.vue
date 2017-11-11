@@ -13,10 +13,10 @@
 				<span></span>
 				<i>邮乐卡</i>
 			</li>
-			<li>
+			<router-link tag='li' to='/shopticket'>
 				<span></span>
 				<i>优惠券</i>
-			</li>
+			</router-link>
 			<li>
 				<span></span>
 				<i>金豆</i>

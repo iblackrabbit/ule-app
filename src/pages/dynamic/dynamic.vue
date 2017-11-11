@@ -5,25 +5,10 @@
     </header>
     <section>
       <div class="d-content">
-        <div class="d-datetime">10-19 15:24</div>
-        <div class="d-news">
-          <ul>
-            <li class="first-news">
-              <img src="" alt="">
-            </li>
-            <li class="other-news">
-              <img src="" alt="">
-              <span></span>
-            </li>
-            <li class="other-news"></li>
-            <li class="other-news news-child"></li>
-          </ul>
-        </div>
+        <iframe src="http://youle.tom.com/ule/index.html"></iframe>
       </div>
     </section>
   </div>
 </template>
 <script>
-
-
 </script>

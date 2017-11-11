@@ -1,0 +1,202 @@
+/*搜索关键词页面*/
+.search-entry{
+    width:100%;
+    .close{
+        height:.4rem;
+        text-align:center;
+        i{
+            font-size:.3rem;
+            color: $base-color;
+        }
+    }
+    .search-input{
+        height:.4rem;
+        position: relative;
+        margin:0 .15rem;
+        background:#fff;
+        @include border-radius(.2rem);
+        @include clearfix();
+        form{
+            float:left;
+            width:2.65rem;
+            height:.4rem;
+            input{
+                border:0;
+                padding-left:.1rem;
+                @include border-radius(.2rem);
+                line-height:.4rem;
+                text-indent:.3rem;
+                width:100%;
+            }
+        }
+        .search-btn{
+            color:#fff;
+            background:$base-color;
+            float:right;
+            width:.8rem;
+            height:.4rem;
+            text-align:center;
+            line-height:.4rem;
+            font-size:100%;
+            @include border-radius(0 .2rem .2rem 0);
+        }
+        .sear{
+            position:absolute;
+            top:.08rem;
+            left:.18rem;
+        }
+        .close-se{
+            position:absolute;
+            top:.08rem;
+            right:.90rem;
+        }
+    }
+}
+
+/*搜索列表页*/
+.good-lists{
+    width:100%;
+    @include flexbox();
+    @include flex-direction(column);
+    height:100%;
+    overflow-y:scroll;
+    .header{
+        height:1.04rem;
+        padding-top:.2rem;
+        background:#fff;
+        .top{
+            height:.33rem;
+            @include flexbox();
+            @include flex-direction();
+            padding:0 .15rem .05rem;
+            line-height:.32rem;
+            .sear-back,
+            .sear-column{
+                font-size:.24rem;
+                color:#515151;
+            }
+            .search-input{
+                @include flex();
+                padding:0 .07rem;
+                margin:0 .2rem;
+                background:#e4e4e4;
+                @include border-radius(5px);
+                @include flexbox();
+                @include flex-direction();
+                i{
+                    font-size:.14rem;
+                    color:#c1c1c1;
+                    width:.18rem;
+                }
+                form{
+                    float:right;
+                    @include flex();
+                    input{
+                        width:100%;
+                        height:98%;
+                        text-indent:.05rem;
+                        background:#e4e4e4;
+                        line-height:.35rem;
+                        border:0;
+                    }
+                }
+            }
+        }
+        .sort{
+            height:.42rem;
+            background:#f4f4f4;
+            padding:.06rem .1rem;
+            @include border(1px 0 0 0,#b6b6b6);
+            .sort-rule{
+                @include flexbox();
+                @include flex-direction();    
+                width:100%;
+                li{
+                    @include flex();
+                    color:#787878;
+                    width:.77rem;
+                    height:.26rem;
+                    text-align:center;
+                    line-height:.26rem;
+                    position:relative;
+                    margin:0 .05rem;
+                    &.active{
+                        color:#fff;
+                        background:$base-color;
+                        &:after{
+                            content:"";
+                            width:0;
+                            height:0;
+                            position:absolute;
+                            bottom:-0.06rem;
+                            left:0.33rem;
+                            border-top:.07rem solid $base-color;
+                            border-left:.07rem solid transparent;
+                            border-right:.07rem solid transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .cont-list{
+        width:100% !important;
+        @include flex();
+        overflow-y:scroll;
+        ul{
+            width:101%;
+            @include clearfix();
+            li{
+                width:1.86rem;
+                float:left;
+                margin:0 .03rem .04rem 0;
+                border:.04rem solid #fff;
+                background:#fff;
+                height:2.75rem;
+                a{
+                    width:1.78rem;
+                    height:1.78rem;
+                    display: inline-block;
+                    img{
+                        width:100%;
+                        max-height:100%;
+                    }
+                }
+                p{
+                    padding-left:.05rem;
+                    line-height:.16rem;
+                    height:.30rem;
+                    overflow:hidden;
+                    &.title{
+                        font-size:.12rem;
+                        font-weight:bold;
+                        color:#000;
+                        margin-top:.09rem;
+                    }
+                    &.free-send{
+                        width:.35rem;
+                        height:.18rem;
+                        line-height:.2rem;
+                        margin-left:.05rem;
+                        margin-top:.05rem;
+                        background:$base-color;
+                        color:#fff;
+                        font-size:.1rem;
+                    }
+                    &.price{
+                        font-size:.12rem;
+                        color:$base-color;
+                        margin-top:.08rem;
+                        height:.2rem;
+                    }
+                }
+            }
+        }
+        .overload{
+            width:100%;
+            height:.4rem;
+            line-height:.4rem;
+            text-align:center;
+        }
+    }
+}

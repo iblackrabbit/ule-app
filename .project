@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>uleAppCli</name>
+=======
+	<name>uleApp</name>
+>>>>>>> master
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +20,11 @@
 	</natures>
 	<filteredResources>
 		<filter>
+<<<<<<< HEAD
 			<id>1508804794031</id>
+=======
+			<id>1508418803823</id>
+>>>>>>> master
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -24,5 +32,20 @@
 				<arguments>1.0-name-matches-false-false-node_modules</arguments>
 			</matcher>
 		</filter>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		<filter>
+			<id>1509288323797</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-node_modules</arguments>
+			</matcher>
+		</filter>
+>>>>>>> origin/huzhengtao
+>>>>>>> master
 	</filteredResources>
 </projectDescription>

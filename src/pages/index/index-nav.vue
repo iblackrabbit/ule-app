@@ -1,9 +1,9 @@
 <template lang="html">
     <div class="nav_all">
         <div class="nav_pic">
-            <div class="nav_bag">
+            <router-link tag="div" to="/threebuy" class="nav_bag">
                 <img src="../../assets/images/index_nav_bag.jpg"/>
-            </div>
+            </router-link>
         </div>
         <div class="nav_list">
             <ul>
@@ -31,8 +31,7 @@ export default{
             var datalist = JSON.parse(res.data.substr(7,res.data.length-8));
             var navcontent = datalist.WAP_INDEX_NAV.data;   
             this.datalist = navcontent;      
-        })
-      
+        })        
     },
     methods:{
 
