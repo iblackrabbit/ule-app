@@ -12,7 +12,7 @@
   </div>
   <div class="user-photo-setting">
 		<div class="photo-num">
-			<div class="user-photo">
+			<div class="user-photo" @click="gotoLogin">
 				<img src="https://my.ule.com/myid/images/default_default_48X48.gif">
 			</div>
 			<div class="user-phoneNumber">
@@ -27,5 +27,20 @@
 </template>
 
 <script>
+export default {
+	data(){
+		return {
+
+		}
+	},
+	mounted(){
+
+	},
+	methods : {
+		gotoLogin (){
+			this.$router.push('/')
+		}
+	}
+}
 </script>
 

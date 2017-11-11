@@ -32,7 +32,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/mainhtml': {
-        target: 'http://static-content.ulecdn.com/',
+        target: 'http://static-content.ulecdn.com/mobilead/recommond/getMobileRecommond.do?sectionKeys=ule_wap_index%2CWAP_INDEX_NAV&isAlone=1&jsonApiCallback=define',
         changeOrigin: true,
         pathRewrite: {
           '^/mainhtml': ''
@@ -42,24 +42,28 @@ module.exports = {
         target: 'http://m.ule.com/',
         changeOrigin: true
       },
-      '/api': {
-        target: 'http://service.ule.com',
-        changeOrigin: true
-      },
+      // '/api': {
+      //   target: 'http://service.ule.com',
+      //   changeOrigin: true
+      // },
 
-      '/icon': {
-        target: 'http://10.9.164.56/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/icon': ''
-        }
-      },
       '/vip': {
         target: 'http://localhost:9000/',
         changeOrigin: true,
         pathRewrite: {
           '^/vip': ''
         }
+      },
+      '/icon': {
+        target: 'http://localhost:80',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/icon': ''
+        }
+      },
+      '/api' : {
+        target : 'http://localhost:3000',
+        changeOrigin :  true
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

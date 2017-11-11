@@ -3,15 +3,17 @@
 		<header>
 			<span class="back"><i class="iconfont">&#xe7ed;</i></span>
 			<h4 class="active">商品</h4>
-			<h4>详情</h4>
+			<h4 @click="jumpDetail()">详情</h4>
 			<span class="share"><i class="iconfont">&#xe7ee;</i></span>
 		</header>
-		<section>
-			<div class="detail-img">
-				<detail-img :id="dataList" />
-				<detail-info :id="dataList" :listid="listId"></detail-info>
-			</div>
-		</section>
+		<transition name="slide-fade">
+			<section ref="detSection">
+				<div class="detail-img">
+					<detail-img :id="dataList" />
+					<detail-info :id="dataList" :listid="listId"></detail-info>
+				</div>
+			</section>
+		</transition>
 		<footer>
 			<detail-footer />
 		</footer>
@@ -30,35 +32,43 @@
 		data : function(){
 			return {
 				dataList : {},
-//				listId : 3006843,  //黄桃
-				listId : 912051,
+				listId : this.$route.params.id,
 				storeId : 0
 			}
 		},
-		methods : {  //单击事件等
-			
+		methods : {
+			changePage(){
+				var that = this;
+				axiosUtil(this,'item/searchItemsByListId.do',{
+					jsonApiCallback : "j",
+					listId : that.listId,
+					appkey : "4b9f40822ddd5cd5",
+					version_no : "apr_2010_build01",
+					_ : "1506153953037"
+				},'dataList');
+			},
+			jumpDetail(){
+				this.$refs.detSection.scrollTop = "1400";
+			}
 		},
 		components : {
 			detailFooter : Footer,
 			detailImg : detImg,
 			detailInfo : detInfo
 		},
+		watch : {
+			'$route' : function(){
+				this.listId = this.$route.params.id;
+				this.changePage();
+			}
+		},
 		mounted(){
+//			console.log(this.$refs.detSection);
 			var that = this;
-			Bus.$on('listID',function(res){
-				that.listId = res;
-			})
-			axiosUtil(this,'item/searchItemsByListId.do',{
-					jsonApiCallback : "j",
-					listId : that.listId,  
-					appkey : "4b9f40822ddd5cd5",
-					version_no : "apr_2010_build01",
-					_ : "1506153953037"
-			},'dataList');
+			this.changePage();
 		},
 		updated(){
-			this.storeId = this.dataList.storeId;
-			Bus.$emit("storeId",this.dataList.storeId);
+			
 		}
 	}
 </script>

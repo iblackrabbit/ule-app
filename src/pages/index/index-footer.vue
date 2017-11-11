@@ -30,7 +30,13 @@ import VueRouter from 'vue-router';
 import '../../assets/iconfont/iconfont.ttf'
 import '../../assets/iconfont/iconfont.woff'
 
-
+export default{
+	data(){
+		return{
+			
+		}
+	}
+}
 </script>
 
 <style lang="scss">

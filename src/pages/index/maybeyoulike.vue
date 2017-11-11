@@ -11,10 +11,10 @@
                               @translate-change="translateChange" 
                               @bottom-status-change="handleBottomChange" ref="loadmore">
                     <ul>
-                        <!-- <li v-for="list in likelist" v-on:click="sendMsg(list)" > -->
-                        <router-link to="/detail/1" v-for="list in likelist" v-on:click="sendMsg(list)" tag="li">
+                         <!--<li v-for="list in likelist" v-on:click="sendMsg(list.listingId)" >-->   
+                        <router-link :to="'/detail/'+list.listingId" v-for="list in likelist" v-on:click="sendMsg(list.listingId)" tag="li" :key="1">
                             <div class="youlike_content" >
-                                <a href="javascript:;"><img :src="list.imgUrl" alt=""></a>
+                                <a href="javascript:;"><img :src="'http://localhost:3000/uploadimg/'+list.imgUrl" alt=""></a>
                                 <p>{{list.listingName}}</p>
                                 <div>
                                     <span>
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </router-link>
-                        <!-- </li>              -->
+                         <!--</li>-->              
                     </ul>
 
                     <div slot="bottom" class="mint-loadmore-bottom">
@@ -76,24 +76,18 @@ export default{
             this.translate = translateNum.toFixed(2);
             this.moveTranslate = (1 + translateNum / 70).toFixed(2);
         },
-        sendMsg(num){
-            Bus.$emit("listID", num.listingId);        
-        }
-       
+        sendMsg(num){      
+        }       
     },
     mounted() {
-        axios.get('/mainhtml/mobilead/recommond/indexListingCommentGet',{
+        axios.get('/api/goods/getList',{
             params:{
-              sectionKeys:"ule_android_index_prodlist",
               startIndex:0,
-              pageSize:15,
-              type:++this.pagetype,
-              jsonApiCallback:"define"
+              pageSize:15
             }
         })
         .then((res)=>{
-            var youlikelist = JSON.parse(res.data.substr(7,res.data.length-8));
-            this.likelist = youlikelist.result;
+            this.likelist = res.data.result;
         })
     }
 

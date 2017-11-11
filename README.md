@@ -1,4 +1,4 @@
-# ule-app
+# ule
 
 > A Vue.js project
 
